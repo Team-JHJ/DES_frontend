@@ -4,6 +4,7 @@
     top: 0;
     bottom: 0;
     width: 300px;
+    border-right: 1px solid lightgray;
 }
 
 nav {
@@ -15,7 +16,7 @@ nav {
 .logo {
     display: flex;
     padding: 30px;
-    border-bottom: 1px solid #ECECEE;
+    border-bottom: 1px solid #c7c6c6;
     align-items: center;
 }
 
@@ -45,18 +46,45 @@ nav {
 }
 
 .menu-item {
-    padding: 10px 0 10px 10px;
-    border-radius: 3px;
+    position: relative;
     font-size: 20px;
+    border-bottom: 1px solid lightgray;
+    /* 디자인 확인 */
+    padding: 7px;
+    line-height: 1;
+}
+
+.menu-item a{
+    display: block;
+    padding: 15px 0 10px 15px;
+    border-radius: 4px;
+
+}
+
+.menu-item a:hover {
+
+    background: lightblue;
 }
 
 .menu-item.active {
-    background: lightgray;
+    background: #ececec;
 }
 
-.menu-item:hover {
-    background: lightblue;
+
+.items {
+    font-size: 15px;
+    padding-left: 15px;
+    /*display: none;*/
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+    /*transition: 0.4s;*/
 }
+
+/*.menu-item.active .items {*/
+/*    display: block;*/
+/*    visibility: visible;*/
+/*    opacity: 1;*/
+/*}*/
 
 .menu-main {
 

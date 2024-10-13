@@ -1,10 +1,14 @@
 .footer {
     height: 9rem;
-    background: lightyellow;
+    background: #72777c;
 }
 
 .inner {
     max-width: 1500px;
     margin: 0 auto;
-    background: lightblue;
+    /*background: lightblue;*/
+    height: 100%;
+    padding: 30px 10px;
+    box-sizing: border-box;
+    color: white;
 }

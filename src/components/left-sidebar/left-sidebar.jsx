@@ -20,27 +20,67 @@ export default function LeftSidebar() {
                     <div
                         className={`${styles['menu-item']} ${styles['menu-main']}`}
                     >
-                        main
+                        <a href="/home1">main</a>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-vpp']}`}
                     >
-                        vpp
+                        <a href="">vpp</a>
                     </div>
-                    <div
-                        className={`${styles['menu-item']} ${styles['menu-home1']}`}
-                    >
-                        home1
+                    <div className={`${styles['menu-item']} ${styles['']}`}>
+                        <a href="">home1</a>
+                        <div className={styles['items']}>
+                            <span>
+                                <a href="">DER</a>
+                            </span>
+                            <span>
+                                <a href="">Home Loads</a>
+                            </span>
+                            <span>
+                                <a href="">Energy Management Device</a>
+                            </span>
+                            <span>
+                                <a href="">Sustainability Metrics</a>
+                            </span>
+                        </div>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-home2']}`}
                     >
-                        home2
+                        <a href="">home2</a>
+                        <div className={styles['items']}>
+                            <span>
+                                <a href="">DER</a>
+                            </span>
+                            <span>
+                                <a href="">Home Loads</a>
+                            </span>
+                            <span>
+                                <a href="">Energy Management Device</a>
+                            </span>
+                            <span>
+                                <a href="">Sustainability Metrics</a>
+                            </span>
+                        </div>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-home3']}`}
                     >
-                        home3
+                        <a href="">home3</a>
+                        <div className={styles['items']}>
+                            <span>
+                                <a href="">DER</a>
+                            </span>
+                            <span>
+                                <a href="">Home Loads</a>
+                            </span>
+                            <span>
+                                <a href="">Energy Management Device</a>
+                            </span>
+                            <span>
+                                <a href="">Sustainability Metrics</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </nav>
