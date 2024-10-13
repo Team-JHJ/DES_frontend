@@ -1,0 +1,10 @@
+.footer {
+    height: 9rem;
+    background: lightyellow;
+}
+
+.inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    background: lightblue;
+}

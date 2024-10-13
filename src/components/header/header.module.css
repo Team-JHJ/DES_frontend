@@ -1,0 +1,14 @@
+.header {
+    height: 9rem;
+    /*background: lavenderblush;*/
+    background-image: url('src/assets/img/header_bg.png');
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    background-size: cover;
+}
+
+.inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    background: lightgreen;
+}

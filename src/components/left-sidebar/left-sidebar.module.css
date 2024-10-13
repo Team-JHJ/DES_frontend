@@ -1,0 +1,79 @@
+.leftsidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    padding: 30px;
+    border-bottom: 1px solid #ECECEE;
+    align-items: center;
+}
+
+.logo-img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.for {
+    font-size: 14px;
+    color: darkgray;
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 10px 20px 40px 20px;
+}
+
+.menu-item {
+    padding: 10px 0 10px 10px;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.menu-item.active {
+    background: lightgray;
+}
+
+.menu-item:hover {
+    background: lightblue;
+}
+
+.menu-main {
+
+}
+
+.menu-vpp {
+
+}
+
+.menu-home1 {
+
+}
+
+.menu-home2 {
+
+}
+
+.menu-home3 {
+
+}
