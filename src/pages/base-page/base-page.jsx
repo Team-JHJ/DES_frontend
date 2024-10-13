@@ -10,11 +10,11 @@ export default function BasePage() {
             <LeftSidebar />
             <div className={styles.content}>
                 <Header />
-                <div className={styles.inner}>
+                <section className={styles.inner}>
                     <div className={styles.container}>
                         <Outlet />
                     </div>
-                </div>
+                </section>
                 <Footer />
             </div>
         </div>

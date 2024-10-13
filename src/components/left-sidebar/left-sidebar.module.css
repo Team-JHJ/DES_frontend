@@ -63,7 +63,8 @@ nav {
 
 .menu-item a:hover {
 
-    background: lightblue;
+    background: rgba(211, 211, 211, 0.4);
+    /*opacity: 0.4;*/
 }
 
 .menu-item.active {

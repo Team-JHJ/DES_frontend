@@ -1,4 +1,69 @@
 .main-page {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 30px;
 }
+
+.kepco-img {
+    max-width: 10%;
+    /*margin-bottom: 20px;*/
+}
+
+.vpp-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    /*margin-bottom: 20px;*/
+}
+
+.vpp-container  a{
+    width: 15%;
+}
+
+.vpp-img {
+    width: 100%;
+}
+
+.house-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.house {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 27%;
+    /*gap: 20px;*/
+}
+
+.arrow {
+    /*display: block;*/
+    /*height: 100px;*/
+    /*max-height: 50px;*/
+    /*width: fit-content;*/
+    /*margin-bottom: 20px;*/
+}
+
+.arrow1 {
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+}
+.arrow2 {}
+.arrow3 {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+.houseimg {
+    width: 100%;
+}
+
 
