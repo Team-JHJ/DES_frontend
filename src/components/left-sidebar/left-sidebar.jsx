@@ -1,5 +1,6 @@
 import styles from './left-sidebar.module.css'
 import deslogo from '../../assets/img/deslogo.png'
+import { Link } from 'react-router-dom'
 
 export default function LeftSidebar() {
     return (
@@ -20,65 +21,65 @@ export default function LeftSidebar() {
                     <div
                         className={`${styles['menu-item']} ${styles['menu-main']}`}
                     >
-                        <a href="/home1">main</a>
+                        <Link to="/home1">main</Link>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-vpp']}`}
                     >
-                        <a href="">vpp</a>
+                        <Link to="">vpp</Link>
                     </div>
                     <div className={`${styles['menu-item']} ${styles['']}`}>
-                        <a href="">home1</a>
+                        <Link to="">home1</Link>
                         <div className={styles['items']}>
                             <span>
-                                <a href="">DER</a>
+                                <Link to="">DER</Link>
                             </span>
                             <span>
-                                <a href="">Home Loads</a>
+                                <Link to="">Home Loads</Link>
                             </span>
                             <span>
-                                <a href="">Energy Management Device</a>
+                                <Link to="">Energy Management Device</Link>
                             </span>
                             <span>
-                                <a href="">Sustainability Metrics</a>
+                                <Link to="">Sustainability Metrics</Link>
                             </span>
                         </div>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-home2']}`}
                     >
-                        <a href="">home2</a>
+                        <Link to="">home2</Link>
                         <div className={styles['items']}>
                             <span>
-                                <a href="">DER</a>
+                                <Link to="">DER</Link>
                             </span>
                             <span>
-                                <a href="">Home Loads</a>
+                                <Link to="">Home Loads</Link>
                             </span>
                             <span>
-                                <a href="">Energy Management Device</a>
+                                <Link to="">Energy Management Device</Link>
                             </span>
                             <span>
-                                <a href="">Sustainability Metrics</a>
+                                <Link to="">Sustainability Metrics</Link>
                             </span>
                         </div>
                     </div>
                     <div
                         className={`${styles['menu-item']} ${styles['menu-home3']}`}
                     >
-                        <a href="">home3</a>
+                        <Link to="">home3</Link>
                         <div className={styles['items']}>
                             <span>
-                                <a href="">DER</a>
+                                <Link to="">DER</Link>
                             </span>
                             <span>
-                                <a href="">Home Loads</a>
+                                <Link to="">Home Loads</Link>
                             </span>
                             <span>
-                                <a href="">Energy Management Device</a>
+                                <Link to="">Energy Management Device</Link>
                             </span>
                             <span>
-                                <a href="">Sustainability Metrics</a>
+                                <Link to="">Sustainability Metrics</Link>
                             </span>
                         </div>
                     </div>

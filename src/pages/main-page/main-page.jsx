@@ -2,12 +2,20 @@ import styles from './main-page.module.css'
 
 import kepcologo from '../../assets/img/kepco-logo.png'
 import vppimg from '../../assets/img/vpp.png'
+import vpptext from '../../assets/img/vpp-text.png'
 import arrow from '../../assets/img/arrow.png'
 import house1img from '../../assets/img/house1.png'
 import house2img from '../../assets/img/house2.png'
 import house3img from '../../assets/img/house3.png'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function MainPage() {
+    const navigate = useNavigate()
+
+    const navigateHouse = (houseNum) => {
+        navigate(`/${houseNum}`)
+    }
+
     return (
         <main className={styles['main-page']}>
             <img
@@ -17,17 +25,24 @@ export default function MainPage() {
             />
             <img src={arrow} className={styles.arrow} alt="" />
             <div className={styles['vpp-container']}>
-                <a href="/vpp">
+                <Link to="/vpp">
                     <img
                         src={vppimg}
                         alt="vpp img"
                         className={styles['vpp-img']}
                     />
-                    <p>Virtual Power Plant</p>
-                </a>
+                    <img
+                        src={vpptext}
+                        alt="vpp img"
+                        className={styles['vpp-img']}
+                    />
+                </Link>
             </div>
             <div className={styles['house-container']}>
-                <div className={styles['house']}>
+                <div
+                    className={styles['house']}
+                    onClick={() => navigateHouse('house1')}
+                >
                     <img src={arrow} className={styles.arrow1} alt="" />
                     <img
                         src={house1img}
@@ -36,7 +51,10 @@ export default function MainPage() {
                     />
                     <p>house 1</p>
                 </div>
-                <div className={styles['house']}>
+                <div
+                    className={styles['house']}
+                    onClick={() => navigateHouse('house2')}
+                >
                     <img src={arrow} className={styles.arrow2} alt="" />
                     <img
                         src={house2img}
@@ -45,7 +63,10 @@ export default function MainPage() {
                     />
                     <p>house 2</p>
                 </div>
-                <div className={styles['house']}>
+                <div
+                    className={styles['house']}
+                    onClick={() => navigateHouse('house3')}
+                >
                     <img src={arrow} className={styles.arrow3} alt="" />
                     <img
                         src={house3img}

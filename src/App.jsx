@@ -15,12 +15,20 @@ const router = createBrowserRouter([
                 element: <MainPage />,
             },
             {
-                path: '/home1',
-                element: <ListSelectPage />,
-            },
-            {
                 path: '/vpp',
                 element: <VppInfoPage />,
+            },
+            {
+                path: '/:houseId',
+                element: <ListSelectPage />,
+            },
+            // {
+            //     path: '/:houseId/:resourceId',
+            //     element: <ListSelectPage />,
+            // },
+            {
+                path: '*',
+                element: <MainPage />,
             },
         ],
     },
