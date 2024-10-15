@@ -5,6 +5,7 @@ import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
+import MainPage from '@/pages/main-page/main-page.jsx'
 
 export default function ListSelectPage() {
     const navigate = useNavigate()
@@ -14,6 +15,11 @@ export default function ListSelectPage() {
     console.log(houseId)
     // const parameter = useLocation()
     // console.log(parameter)
+
+    const validHouseIds = ['1', '2', '3'] // 유효한 houseId 목록
+    if (!validHouseIds.includes(houseId)) {
+        return <MainPage />
+    }
 
     return (
         <main className={styles['list-select-page']}>
