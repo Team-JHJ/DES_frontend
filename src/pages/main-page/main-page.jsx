@@ -41,7 +41,7 @@ export default function MainPage() {
             <div className={styles['house-container']}>
                 <div
                     className={styles['house']}
-                    onClick={() => navigateHouse('house1')}
+                    onClick={() => navigateHouse('1')}
                 >
                     <img src={arrow} className={styles.arrow1} alt="" />
                     <img
@@ -53,7 +53,7 @@ export default function MainPage() {
                 </div>
                 <div
                     className={styles['house']}
-                    onClick={() => navigateHouse('house2')}
+                    onClick={() => navigateHouse('2')}
                 >
                     <img src={arrow} className={styles.arrow2} alt="" />
                     <img
@@ -65,7 +65,7 @@ export default function MainPage() {
                 </div>
                 <div
                     className={styles['house']}
-                    onClick={() => navigateHouse('house3')}
+                    onClick={() => navigateHouse('3')}
                 >
                     <img src={arrow} className={styles.arrow3} alt="" />
                     <img

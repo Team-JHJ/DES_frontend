@@ -1,4 +1,4 @@
-import styles from './der-list-page.module.css'
+import styles from './sust-metrics-list-page.module.css'
 
 import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
@@ -6,7 +6,7 @@ import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 
-export default function DerListPage() {
+export default function SustMetricsListPage() {
     const navigate = useNavigate()
     const param = useParams()
     console.log(param)
@@ -14,7 +14,7 @@ export default function DerListPage() {
     // console.log(houseId)
 
     return (
-        <main className={styles['der-list-page']}>
+        <main className={styles['sust-metrics-list-page']}>
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
@@ -22,7 +22,7 @@ export default function DerListPage() {
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Solar</p>
+                        <p>Solar Data</p>
                     </div>
                 </div>
                 <div className={styles['blank']}></div>
@@ -32,7 +32,7 @@ export default function DerListPage() {
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>EV Battery</p>
+                        <p>EV Battery Data</p>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ export default function DerListPage() {
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Wind</p>
+                        <p>Wind Data</p>
                     </div>
                 </div>
                 <div className={styles['blank']}></div>
@@ -68,7 +68,7 @@ export default function DerListPage() {
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>ESS</p>
+                        <p>ESS Data</p>
                     </div>
                 </div>
             </div>

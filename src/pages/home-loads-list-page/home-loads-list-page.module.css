@@ -1,4 +1,4 @@
-.list-select-page {
+.home-loads-list-page {
     display: flex;
     /*height: 100%;*/
     min-height: 800px;
@@ -13,7 +13,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    gap: 100px;
 }
 
 .choice {
@@ -30,10 +29,6 @@
     overflow: hidden;
     min-width: 100px;
     cursor: pointer;
-}
-
-.blank {
-    height: 30px;
 }
 
 .choice img {

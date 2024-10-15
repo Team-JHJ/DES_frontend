@@ -1,42 +1,40 @@
-import styles from './der-list-page.module.css'
+import styles from './home-loads-list-page.module.css'
 
 import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-export default function DerListPage() {
-    const navigate = useNavigate()
+export default function HomeLoadsListPage() {
     const param = useParams()
     console.log(param)
     const houseId = param.houseId
     // console.log(houseId)
 
     return (
-        <main className={styles['der-list-page']}>
+        <main className={styles['home-loads-list-page']}>
             <div className={styles['container']}>
-                <div
-                    className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
-                >
+                <div className={styles['choice']}>
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Solar</p>
+                        <p>Distribution Energy Resource</p>
                     </div>
                 </div>
-                <div className={styles['blank']}></div>
-                <div
-                    className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/home-loads`)}
-                >
+                <div className={styles['choice']}>
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>EV Battery</p>
+                        <p>Home Loads</p>
                     </div>
                 </div>
             </div>
             <div className={styles['container']}>
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Home Loads</p>
+                    </div>
+                </div>
                 <img
                     src={
                         houseId === '1'
@@ -50,25 +48,25 @@ export default function DerListPage() {
                     className={styles.houseimg}
                     alt="house1 img"
                 />
-            </div>
-            <div className={styles['container']}>
-                <div
-                    className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/emd`)}
-                >
+                <div className={styles['choice']}>
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Wind</p>
+                        <p>Home Loads</p>
                     </div>
                 </div>
-                <div className={styles['blank']}></div>
-                <div
-                    className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
-                >
+            </div>
+            <div className={styles['container']}>
+                <div className={styles['choice']}>
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>ESS</p>
+                        <p>Energy Management Device</p>
+                    </div>
+                </div>
+
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Sustainability Metrics</p>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     /*min-height: 9rem;*/
     min-height: 140px;
     /*background: lavenderblush;*/
-    background-image: url('src/assets/img/header_bg.png');
+    background-image: url('@/assets/img/header_bg.png');
     background-repeat: no-repeat;
     /*background-position: center;*/
     background-size: cover;
