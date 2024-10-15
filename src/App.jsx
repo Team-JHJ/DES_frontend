@@ -7,7 +7,6 @@ import VppInfoPage from './pages/vpp-info-page/vpp-info-page.jsx'
 import DerListPage from '@/pages/der-list-page/der-list-page.jsx'
 import EmdListPage from '@/pages/emd-list-page/emd-list-page.jsx'
 import HomeLoadsListPage from '@/pages/home-loads-list-page/home-loads-list-page.jsx'
-import SustMetricsList from '@/pages/sust-metrics-list-page/sust-metrics-list-page.jsx'
 import SustMetricsListPage from '@/pages/sust-metrics-list-page/sust-metrics-list-page.jsx'
 
 const router = createBrowserRouter([
