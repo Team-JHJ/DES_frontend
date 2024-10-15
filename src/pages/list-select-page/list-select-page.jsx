@@ -3,6 +3,7 @@ import styles from './list-select-page.module.css'
 import house1img from '../../assets/img/house1.png'
 import house2img from '../../assets/img/house2.png'
 import house3img from '../../assets/img/house3.png'
+import dericon from '../../assets/img/der_icon.png'
 import { useLocation, useParams } from 'react-router-dom'
 
 export default function ListSelectPage() {
@@ -15,15 +16,51 @@ export default function ListSelectPage() {
 
     return (
         <main className={styles['list-select-page']}>
-            <div className={styles['container']}>1</div>
+            <div className={styles['container']}>
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Distribution Energy Resource</p>
+                    </div>
+                </div>
+                <div className={styles['blank']}></div>
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Home Loads</p>
+                    </div>
+                </div>
+            </div>
             <div className={styles['container']}>
                 <img
-                    src={`${houseId === 'house1'} ? 'house1img' : ${houseId === 'house2'} ? 'house2img' : ${houseId === 'house2'} ? 'house3img': ''}`}
+                    src={
+                        houseId === 'house1'
+                            ? house1img
+                            : houseId === 'house2'
+                              ? house2img
+                              : houseId === 'house3'
+                                ? house3img
+                                : house1img // 기본 이미지
+                    }
                     className={styles.houseimg}
                     alt="house1 img"
                 />
             </div>
-            <div className={styles['container']}>3</div>
+            <div className={styles['container']}>
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Energy Management Device</p>
+                    </div>
+                </div>
+                <div className={styles['blank']}></div>
+                <div className={styles['choice']}>
+                    <img src={dericon} alt="der icon" />
+                    <div className={styles['description']}>
+                        <p>Sustainability Metrics</p>
+                    </div>
+                </div>
+            </div>
         </main>
     )
 }

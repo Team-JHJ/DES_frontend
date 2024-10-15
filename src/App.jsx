@@ -19,7 +19,7 @@ const router = createBrowserRouter([
                 element: <VppInfoPage />,
             },
             {
-                path: '/:houseId',
+                path: '/house/:houseId',
                 element: <ListSelectPage />,
             },
             // {

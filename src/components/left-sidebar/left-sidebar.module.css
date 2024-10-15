@@ -13,11 +13,15 @@ nav {
     height: 100%;
 }
 
-.logo {
-    display: flex;
+.logo-container {
     padding: 30px;
     border-bottom: 1px solid #c7c6c6;
+}
+
+.logo {
+    display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .logo-img {

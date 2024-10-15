@@ -13,7 +13,7 @@ export default function MainPage() {
     const navigate = useNavigate()
 
     const navigateHouse = (houseNum) => {
-        navigate(`/${houseNum}`)
+        navigate(`/house/${houseNum}`)
     }
 
     return (
