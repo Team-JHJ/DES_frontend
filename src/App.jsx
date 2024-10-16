@@ -8,6 +8,7 @@ import DerListPage from '@/pages/der-list-page/der-list-page.jsx'
 import EmdListPage from '@/pages/emd-list-page/emd-list-page.jsx'
 import HomeLoadsListPage from '@/pages/home-loads-list-page/home-loads-list-page.jsx'
 import SustMetricsListPage from '@/pages/sust-metrics-list-page/sust-metrics-list-page.jsx'
+import DetailPage from '@/pages/details-page/details-page.jsx'
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,22 @@ const router = createBrowserRouter([
             {
                 path: '/house/:houseId/sust-metrics',
                 element: <SustMetricsListPage />,
+            },
+            {
+                path: '/house/:houseId/der/details',
+                element: <DetailPage />,
+            },
+            {
+                path: '/house/:houseId/emd/details',
+                element: <DetailPage />,
+            },
+            {
+                path: '/house/:houseId/home-loads/details',
+                element: <DetailPage />,
+            },
+            {
+                path: '/house/:houseId/sust-metrics/details',
+                element: <DetailPage />,
             },
             {
                 path: '*',
