@@ -30,6 +30,8 @@
     overflow: hidden;
     min-width: 100px;
     cursor: pointer;
+    aspect-ratio: 1;
+    gap: 3px;
 }
 
 .blank {
@@ -42,8 +44,6 @@
 
 .description {
     width: 70%;
-    /*text-align: center;*/
-    height: 57px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -39,41 +39,47 @@ export default function MainPage() {
                 </Link>
             </div>
             <div className={styles['house-container']}>
-                <div
-                    className={styles['house']}
-                    onClick={() => navigateHouse('1')}
-                >
+                <div className={styles['house']}>
                     <img src={arrow} className={styles.arrow1} alt="" />
-                    <img
-                        src={house1img}
-                        className={styles.houseimg}
-                        alt="house1 img"
-                    />
-                    <p>house 1</p>
+                    <div
+                        className={styles['house-click']}
+                        onClick={() => navigateHouse('1')}
+                    >
+                        <img
+                            src={house1img}
+                            className={styles.houseimg}
+                            alt="house1 img"
+                        />
+                        <p>house 1</p>
+                    </div>
                 </div>
-                <div
-                    className={styles['house']}
-                    onClick={() => navigateHouse('2')}
-                >
+                <div className={styles['house']}>
                     <img src={arrow} className={styles.arrow2} alt="" />
-                    <img
-                        src={house2img}
-                        className={styles.houseimg}
-                        alt="house2 img"
-                    />
-                    <p>house 2</p>
+                    <div
+                        className={styles['house-click']}
+                        onClick={() => navigateHouse('2')}
+                    >
+                        <img
+                            src={house2img}
+                            className={styles.houseimg}
+                            alt="house2 img"
+                        />
+                        <p>house 2</p>
+                    </div>
                 </div>
-                <div
-                    className={styles['house']}
-                    onClick={() => navigateHouse('3')}
-                >
+                <div className={styles['house']}>
                     <img src={arrow} className={styles.arrow3} alt="" />
-                    <img
-                        src={house3img}
-                        className={styles.houseimg}
-                        alt="house3 img"
-                    />
-                    <p>house 3</p>
+                    <div
+                        className={styles['house-click']}
+                        onClick={() => navigateHouse('3')}
+                    >
+                        <img
+                            src={house3img}
+                            className={styles.houseimg}
+                            alt="house3 img"
+                        />
+                        <p>house 3</p>
+                    </div>
                 </div>
             </div>
         </main>
