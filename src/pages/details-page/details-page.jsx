@@ -1,5 +1,8 @@
 import styles from './details-page.module.css'
 import MenuCard from '@/components/menu-card/menu-card.jsx'
+import InfoTable from '@/components/info-table/info-table.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-regular-svg-icons'
 
 export default function DetailPage() {
     //     const exampleObj2 = {
@@ -71,6 +74,18 @@ export default function DetailPage() {
                         column_description: '발전  효율',
                         column_value: 10,
                     },
+                    {
+                        id: 3,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                    {
+                        id: 4,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
                 ],
             },
             {
@@ -113,10 +128,27 @@ export default function DetailPage() {
             </div>
             <div className={styles['details-container']}>
                 <div className={styles['details-header']}>
-                    <div className={styles['details-title']}></div>
-                    <p>{}</p>
+                    <div className={styles['details-title']}>
+                        <FontAwesomeIcon
+                            icon={faClock}
+                            style={{ marginRight: '5px' }}
+                        />
+                        {exampleObj.menu[0].list_name}
+                    </div>
+                    <p className={styles['details-description']}>
+                        {exampleObj.menu[0].list_description}
+                    </p>
                 </div>
-                <div className={styles['menu-card-container']}>{}</div>
+                <div className={styles['menu-card-container']}>
+                    {exampleObj.menu[0].list.map((item, index) => (
+                        <InfoTable
+                            key={index}
+                            name={item.column_name}
+                            description={item.column_description}
+                            value={item.column_value}
+                        />
+                    ))}
+                </div>
             </div>
         </main>
     )

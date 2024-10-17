@@ -71,6 +71,18 @@ export default function VppInfoPage() {
                 list_description: '발전 효율',
                 list_value: 15.7,
             },
+            {
+                id: 3,
+                list_name: 'generation_efficiency',
+                list_description: '발전 효율',
+                list_value: 15.7,
+            },
+            {
+                id: 4,
+                list_name: 'generation_efficiency',
+                list_description: '발전 효율',
+                list_value: 15.7,
+            },
         ],
     }
 
