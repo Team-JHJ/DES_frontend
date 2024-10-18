@@ -51,7 +51,7 @@ nav {
 
 .menu-item {
     position: relative;
-    font-size: 20px;
+    font-size: 19px;
     border-bottom: 1px solid lightgray;
     /* 디자인 확인 */
     padding: 7px;
@@ -66,19 +66,19 @@ nav {
 }
 
 .menu-item a:hover {
-
     background: rgba(211, 211, 211, 0.4);
     /*opacity: 0.4;*/
 }
 
-.menu-item.active {
-    background: #ececec;
+.menu-item a.active {
+    background: rgba(211, 211, 211, 0.8);
 }
 
 
 .items {
     font-size: 15px;
-    padding-left: 15px;
+    /*padding-left: 15px;*/
+    padding: 5px 0 5px 15px;
     /*display: none;*/
     /*visibility: hidden;*/
     /*opacity: 0;*/
