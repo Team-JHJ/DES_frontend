@@ -3,6 +3,7 @@ import MenuCard from '@/components/menu-card/menu-card.jsx'
 import InfoTable from '@/components/info-table/info-table.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { useState } from 'react'
 
 export default function DetailPage() {
     //     const exampleObj2 = {
@@ -107,10 +108,53 @@ export default function DetailPage() {
                     },
                 ],
             },
+            {
+                id: 3,
+                list_name: 'EV battery',
+                list_description: 'EV 배터리 시스템 설명...',
+                list: [
+                    {
+                        id: 1,
+                        column_name: 'generation_capacity',
+                        column_description: '발전 용량 정보',
+                        column_value: 10,
+                    },
+                    {
+                        id: 2,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                    {
+                        id: 3,
+                        column_name: 'soc',
+                        column_description: '배터리의 상태(%)',
+                        column_value: 1000,
+                    },
+                    {
+                        id: 4,
+                        column_name: 'installation_date',
+                        column_description: 'DER이 설치된 날짜',
+                        column_value: 50,
+                    },
+                    {
+                        id: 5,
+                        column_name: 'grid_connection',
+                        column_description: 'DER의 그리드 연결 상태',
+                        column_value: 1000,
+                    },
+                    {
+                        id: 6,
+                        column_name: 'der_type',
+                        column_description: 'DER의 유형',
+                        column_value: 50,
+                    },
+                ],
+            },
         ],
     }
 
-    let choice = 'Solar'
+    const [list, setList] = useState(exampleObj.menu[0].list)
 
     return (
         <main className={styles['details-page']}>
@@ -122,7 +166,12 @@ export default function DetailPage() {
                 </div>
                 <div className={styles['menu-content']}>
                     {exampleObj.menu.map((item, index) => (
-                        <MenuCard key={index} menu={item.list_name} />
+                        <MenuCard
+                            key={index}
+                            menu={item.list_name}
+                            list={item.list}
+                            setList={setList}
+                        />
                     ))}
                 </div>
             </div>
@@ -140,7 +189,7 @@ export default function DetailPage() {
                     </p>
                 </div>
                 <div className={styles['menu-card-container']}>
-                    {exampleObj.menu[0].list.map((item, index) => (
+                    {list.map((item, index) => (
                         <InfoTable
                             key={index}
                             name={item.column_name}
@@ -148,6 +197,14 @@ export default function DetailPage() {
                             value={item.column_value}
                         />
                     ))}
+                    {/*{exampleObj.menu[0].list.map((item, index) => (*/}
+                    {/*    <InfoTable*/}
+                    {/*        key={index}*/}
+                    {/*        name={item.column_name}*/}
+                    {/*        description={item.column_description}*/}
+                    {/*        value={item.column_value}*/}
+                    {/*    />*/}
+                    {/*))}*/}
                 </div>
             </div>
         </main>
