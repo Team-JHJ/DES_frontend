@@ -2,16 +2,16 @@ package me.kjeok.edsproject.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import me.kjeok.edsproject.domain.Resource;
 
 @Getter
-
 public class CategoryResponse {
-    private String categoryName;
-    private String categoryDescription;
+    private String resourceName;
+    private String resourceDescription;
 
     @Builder
-    public CategoryResponse(String categoryName, String categoryDescription) {
-        this.categoryName = categoryName;
-        this.categoryDescription = categoryDescription;
+    public CategoryResponse(Resource resource) {
+        this.resourceName = resource.getResourceName();
+        this.resourceDescription = resource.getResourceDescription();
     }
 }

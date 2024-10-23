@@ -16,8 +16,8 @@ public class ColumnList {
     private Long id;
 
     @Column(name = "column_name", nullable = false)
-    private String columnName;
+    private String listName;
 
     @Column(name = "description_content", nullable = false)
-    private String columnDescription;
+    private String listDescription;
 }

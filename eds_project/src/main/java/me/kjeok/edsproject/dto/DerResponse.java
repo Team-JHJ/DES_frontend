@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 @Getter
 public class DerResponse {
-    private int order; //order = 순서
-    private String derType;
+    private int id; //order = 순서
+    //private String derType;
     private int generationCapacity;
     private String installationDate;
     private String location;
@@ -17,9 +17,9 @@ public class DerResponse {
     private BigDecimal energyGeneration;
     private String gridConnection;
 
-    public DerResponse(Der der, int order) {
-        this.order = order;
-        this.derType = der.getDerType();
+    public DerResponse(Der der, int id) {
+        this.id = id;
+        //this.derType = der.getDerType();
         this.generationCapacity = der.getGenerationCapacity();
         this.installationDate = der.getInstallationDate();
         this.location = der.getLocation();
