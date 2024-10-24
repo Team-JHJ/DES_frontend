@@ -7,6 +7,7 @@ import me.kjeok.edsproject.domain.Resource;
 import me.kjeok.edsproject.dto.CategoryResponse;
 import me.kjeok.edsproject.dto.MenuResponse;
 import me.kjeok.edsproject.repository.DerRepository;
+import me.kjeok.edsproject.repository.DerRepositoryCustom;
 import me.kjeok.edsproject.repository.ListRepository;
 import me.kjeok.edsproject.repository.ResourceRepository;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,9 @@ public class EdsService {
         return derRepository.findByHomeIdAndDerType(home_id, category);
     }
 
+    public Object getColumnValue(int homeId, String columnName) {
+        return derRepository.findColumnValueByHomeId(homeId, columnName);
+    }
 
 
 

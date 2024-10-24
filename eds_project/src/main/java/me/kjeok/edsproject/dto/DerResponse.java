@@ -17,6 +17,8 @@ public class DerResponse {
     private BigDecimal energyGeneration;
     private String gridConnection;
 
+
+
     public DerResponse(Der der, int id) {
         this.id = id;
         //this.derType = der.getDerType();

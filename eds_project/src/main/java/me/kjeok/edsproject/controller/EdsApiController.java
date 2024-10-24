@@ -53,15 +53,33 @@ public class EdsApiController {
         return ResponseEntity.ok(menuResponses);
     }
 
-    @GetMapping("/{list}/findByList")
-    public ResponseEntity<List<ListResponse>> list(@PathVariable("list") String list) {
+
+
+    /*@GetMapping("/{home_id}/{list}/findByColumnName")
+    public ResponseEntity<String> findValue(
+            @PathVariable("home_id") int homeId,
+            @PathVariable("list") String columnName) {
+
+        String columnValue = edsService.getColumnValue(homeId, columnName);
+
+        if (columnValue == null) {
+            return ResponseEntity.notFound().build(); // 값이 없을 경우 404 반환
+        }
+
+        return ResponseEntity.ok(columnValue);
+    }*/
+
+    @GetMapping("/{home_id}/{list}/findByList")
+    public ResponseEntity<List<ListResponse>> list(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
+
+        Object columnValue = edsService.getColumnValue(homeId, list);
+
         List<ListResponse> listResponses = edsService.findByList(list)
                 .stream()
-                .map(columnList -> new ListResponse(columnList, 2, "adf"))
+                .map(columnList -> new ListResponse(columnList, 2, columnValue))
                 .toList();
         return ResponseEntity.ok(listResponses);
     }
-
 
     @GetMapping("/{home_id}/{category}/findByDerMenu")
     public ResponseEntity<List<DerResponse>> der(
@@ -75,6 +93,10 @@ public class EdsApiController {
 
         return ResponseEntity.ok(derResponses);
     }
+
+    @GetMapping("/{home_id}/{category}/final")
+    public ResponseEntity<>
+
 }
 
     /*@PostMapping("/home/{home_id}/{category}/{list}")
