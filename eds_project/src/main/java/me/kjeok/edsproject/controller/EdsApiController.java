@@ -94,9 +94,6 @@ public class EdsApiController {
         return ResponseEntity.ok(derResponses);
     }
 
-    @GetMapping("/{home_id}/{category}/final")
-    public ResponseEntity<>
-
 }
 
     /*@PostMapping("/home/{home_id}/{category}/{list}")

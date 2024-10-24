@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.kjeok.edsproject.domain.ColumnList;
 import me.kjeok.edsproject.domain.Der;
 import me.kjeok.edsproject.domain.Resource;
+import me.kjeok.edsproject.dto.ApiResponse;
 import me.kjeok.edsproject.dto.CategoryResponse;
 import me.kjeok.edsproject.dto.MenuResponse;
 import me.kjeok.edsproject.repository.DerRepository;
@@ -41,6 +42,11 @@ public class EdsService {
     public Object getColumnValue(int homeId, String columnName) {
         return derRepository.findColumnValueByHomeId(homeId, columnName);
     }
+
+//    public ApiResponse getFinalResponse(int homeId, String category) {
+//        ApiResponse apiResponse = new ApiResponse.Category();
+//
+//    }
 
 
 
