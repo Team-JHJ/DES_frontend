@@ -26,12 +26,16 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    width: 40%;
+    width: 45%;
     overflow: hidden;
-    min-width: 100px;
+    min-width: 120px;
     cursor: pointer;
     aspect-ratio: 1;
     gap: 3px;
+}
+
+.choice:hover {
+    background: #ececec;
 }
 
 .blank {
@@ -47,11 +51,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.1rem;
 }
 
 @media (max-width:1500px) {
     .description {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 }
 

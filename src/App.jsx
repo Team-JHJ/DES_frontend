@@ -9,6 +9,7 @@ import EmdListPage from '@/pages/emd-list-page/emd-list-page.jsx'
 import HomeLoadsListPage from '@/pages/home-loads-list-page/home-loads-list-page.jsx'
 import SustMetricsListPage from '@/pages/sust-metrics-list-page/sust-metrics-list-page.jsx'
 import DetailPage from '@/pages/details-page/details-page.jsx'
+import IntroductionPage from '@/pages/introduction-page/introduction-page.jsx'
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: '/house/:houseId/sust-metrics/details',
                 element: <DetailPage />,
+            },
+            {
+                path: '/introduction',
+                element: <IntroductionPage />,
             },
             {
                 path: '*',

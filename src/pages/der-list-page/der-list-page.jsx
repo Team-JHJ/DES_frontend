@@ -13,12 +13,16 @@ export default function DerListPage() {
     const houseId = param.houseId
     // console.log(houseId)
 
+    const navigateDetails = (der) => {
+        navigate(`/house/${houseId}/der/details`, { state: der })
+    }
+
     return (
         <main className={styles['der-list-page']}>
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
+                    onClick={() => navigateDetails('solar')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -28,7 +32,7 @@ export default function DerListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/home-loads`)}
+                    onClick={() => navigateDetails('ev battery')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -54,7 +58,7 @@ export default function DerListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/emd`)}
+                    onClick={() => navigateDetails('wind')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -64,7 +68,7 @@ export default function DerListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
+                    onClick={() => navigateDetails('ess')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>

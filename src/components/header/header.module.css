@@ -1,8 +1,8 @@
 .header {
     /*min-height: 9rem;*/
-    min-height: 140px;
+    min-height: 160px;
     /*background: lavenderblush;*/
-    background-image: url('@/assets/img/header_bg.png');
+    background-image: url('@/assets/img/section5.png');
     background-repeat: no-repeat;
     /*background-position: center;*/
     background-size: cover;

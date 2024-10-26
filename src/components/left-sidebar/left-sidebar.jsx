@@ -33,6 +33,16 @@ export default function LeftSidebar() {
                         className={`${styles['menu-item']} ${styles['menu-main']}`}
                     >
                         <Link
+                            to="/introduction"
+                            className={`${pathname === '/introduction' ? styles['active'] : ''}`}
+                        >
+                            introduction
+                        </Link>
+                    </div>
+                    <div
+                        className={`${styles['menu-item']} ${styles['menu-main']}`}
+                    >
+                        <Link
                             to="/"
                             className={`${pathname === '/' ? styles['active'] : ''}`}
                         >
@@ -106,7 +116,7 @@ export default function LeftSidebar() {
                                     to="/house/2/der"
                                     className={`${pathname === '/house/2/der' ? styles['active'] : ''}`}
                                 >
-                                    DER
+                                    Distribution Energy Resource
                                 </Link>
                             </span>
                             <span>
@@ -150,7 +160,7 @@ export default function LeftSidebar() {
                                     to="/house/3/der"
                                     className={`${pathname === '/house/3/der' ? styles['active'] : ''}`}
                                 >
-                                    DER
+                                    Distribution Energy Resource
                                 </Link>
                             </span>
                             <span>

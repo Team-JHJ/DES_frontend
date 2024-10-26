@@ -13,12 +13,18 @@ export default function SustMetricsListPage() {
     const houseId = param.houseId
     // console.log(houseId)
 
+    // const navigate = useNavigate()
+
+    const navigateDetails = (sust) => {
+        navigate(`/house/${houseId}/sust-metrics/details`, { state: sust })
+    }
+
     return (
         <main className={styles['sust-metrics-list-page']}>
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
+                    onClick={() => navigateDetails('sust')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -28,7 +34,7 @@ export default function SustMetricsListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/home-loads`)}
+                    onClick={() => navigateDetails('sust')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -54,7 +60,7 @@ export default function SustMetricsListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/emd`)}
+                    onClick={() => navigateDetails('sust')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -64,7 +70,7 @@ export default function SustMetricsListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigate(`/house/${houseId}/der`)}
+                    onClick={() => navigateDetails('sust')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>

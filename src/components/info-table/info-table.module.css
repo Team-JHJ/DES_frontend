@@ -25,16 +25,16 @@
 }
 
 .name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .description {
-    font-size: 14px;
-    color: darkgray;
+    font-size: 16px;
+    color: #919090;
 }
 
 .value {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: bold;
 }

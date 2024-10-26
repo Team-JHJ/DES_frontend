@@ -4,7 +4,7 @@ import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function HomeLoadsListPage() {
     const param = useParams()
@@ -12,16 +12,28 @@ export default function HomeLoadsListPage() {
     const houseId = param.houseId
     // console.log(houseId)
 
+    const navigate = useNavigate()
+
+    const navigateDetails = (homeloads) => {
+        navigate(`/house/${houseId}/home-loads/details`, { state: homeloads })
+    }
+
     return (
         <main className={styles['home-loads-list-page']}>
             <div className={styles['container']}>
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Distribution Energy Resource</p>
                     </div>
                 </div>
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Home Loads</p>
@@ -29,7 +41,10 @@ export default function HomeLoadsListPage() {
                 </div>
             </div>
             <div className={styles['container']}>
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Home Loads</p>
@@ -48,7 +63,10 @@ export default function HomeLoadsListPage() {
                     className={styles.houseimg}
                     alt="house1 img"
                 />
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Home Loads</p>
@@ -56,14 +74,20 @@ export default function HomeLoadsListPage() {
                 </div>
             </div>
             <div className={styles['container']}>
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Energy Management Device</p>
                     </div>
                 </div>
 
-                <div className={styles['choice']}>
+                <div
+                    className={styles['choice']}
+                    onClick={() => navigateDetails('homeloads')}
+                >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
                         <p>Sustainability Metrics</p>
