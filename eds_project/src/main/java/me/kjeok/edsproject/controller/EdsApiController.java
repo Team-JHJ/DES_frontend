@@ -79,6 +79,5 @@ public class EdsApiController {
         return ResponseEntity.ok(derResponses);
     }
 
-    @GetMapping("/{home_id}/{category}/finalResponse")
 
 }
