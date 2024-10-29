@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.resource.ResourceResolver;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,8 +56,8 @@ public class EdsApiController {
         return ResponseEntity.ok(menuResponses);
     }
 
-    @GetMapping("/{home_id}/{list}/findByList")
-    public ResponseEntity<List<ListResponse>> list(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
+    @GetMapping("/{home_id}/{list}/findByListt")
+    public ResponseEntity<List<ListResponse>> listt(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
 
         Object columnValue = edsService.getColumnValue(homeId, list);
 
@@ -73,11 +75,33 @@ public class EdsApiController {
 
         List<DerResponse> derResponses = edsService.findByDerMenu(homeId, category)
                 .stream()
-                .map(der -> new DerResponse(der, 2))  // 2는 예시값
+                .map(der -> new DerResponse(der))  // 2는 예시값
                 .toList();
 
         return ResponseEntity.ok(derResponses);
     }
 
+    @GetMapping("/fields")
+    public ResponseEntity<List<String>> getFieldNames() {
+        List<String> fieldNames = Arrays.stream(DerResponse.class.getDeclaredFields())  // Der.class 대신 DerResponse.class 사용
+                .map(Field::getName)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(fieldNames);
+    }
+
+    @GetMapping("/{home_id}/{list}/findByList")
+    public ResponseEntity<List<ListResponse>> list(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
+        Object columnValue = edsService.getColumnValue(homeId, list);
+
+        // DTO의 필드명을 가져오는 메서드 호출
+        List<String> fieldNames = getFieldNames().getBody();
+
+        List<ListResponse> listResponses = IntStream.range(0, fieldNames.size())
+                .mapToObj(i -> new ListResponse(i + 1, fieldNames.get(i), "설명 미정", columnValue)) // 설명은 필요에 따라 수정
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(listResponses);
+    }
 
 }

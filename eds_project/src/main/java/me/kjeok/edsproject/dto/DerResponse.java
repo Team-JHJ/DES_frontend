@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 
 @Getter
 public class DerResponse {
-    private int id; //order = 순서
-    //private String derType;
     private int generationCapacity;
     private String installationDate;
     private String location;
@@ -19,8 +17,7 @@ public class DerResponse {
 
 
 
-    public DerResponse(Der der, int id) {
-        this.id = id;
+    public DerResponse(Der der) {
         this.generationCapacity = der.getGenerationCapacity();
         this.installationDate = der.getInstallationDate();
         this.location = der.getLocation();

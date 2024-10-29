@@ -8,5 +8,4 @@ import java.util.List;
 @Repository
 public interface DerRepository extends JpaRepository<Der, Long>, DerRepositoryCustom {
     List<Der> findByHomeIdAndDerType(int homeId, String derType);
-    List<Der> findByHomeId(int homeId);
 }
