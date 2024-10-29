@@ -21,7 +21,6 @@ public class DerResponse {
 
     public DerResponse(Der der, int id) {
         this.id = id;
-        //this.derType = der.getDerType();
         this.generationCapacity = der.getGenerationCapacity();
         this.installationDate = der.getInstallationDate();
         this.location = der.getLocation();
