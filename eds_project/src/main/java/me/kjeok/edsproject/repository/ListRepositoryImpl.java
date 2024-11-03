@@ -1,15 +1,11 @@
-/*
 package me.kjeok.edsproject.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class DerRepositoryImpl implements DerRepositoryCustom {
-
+public class ListRepositoryImpl implements ListRepositoryCustom {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -23,7 +19,14 @@ public class DerRepositoryImpl implements DerRepositoryCustom {
         return results.isEmpty() ? null : results.get(0); // 결과가 없을 경우 null 반환
     }
 
-
+    @Override
+    public Object findColumnValueByHomeIdAndLoadType(int homeId, String columnName, String loadType) {
+        String sql = "SELECT " + columnName + " FROM homeload_table WHERE home_id = :homeId AND load_type = :loadType";
+        List<Object> results = entityManager.createNativeQuery(sql)
+                .setParameter("homeId", homeId)
+                .setParameter("loadType", loadType) // derType 파라미터 추가
+                .getResultList();
+        return results.isEmpty() ? null : results.get(0); // 결과가 없을 경우 null 반환
+    }
 
 }
-*/

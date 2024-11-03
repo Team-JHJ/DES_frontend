@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ListRepository extends JpaRepository<ColumnList, Long> {
+public interface ListRepository extends JpaRepository<ColumnList, Long>, ListRepositoryCustom {
     List<ColumnList> findByTableNameAndListName(String tableName,String list);
 
 }
