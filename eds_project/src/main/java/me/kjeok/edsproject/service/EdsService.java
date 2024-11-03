@@ -23,22 +23,22 @@ public class EdsService {
         return resourceRepository.findByResourceName(categoryName);
     }
 
-    public List<Resource> findByMenu(String resourceName, int id) {
+    public List<Resource> findByMenu(String resourceName) {
         return resourceRepository.findByResourceName(resourceName);
     }
 
-    public List<Der> findByDerMenu(int home_id, String category) {
-        return derRepository.findByHomeIdAndDerType(home_id, category);
+    public List<Der> findByDerMenu(int home_id, String derType) {
+        return derRepository.findByHomeIdAndDerType(home_id, derType);
     }
 
-    public Object getColumnValue(int homeId, String columnName) {
-        return derRepository.findColumnValueByHomeId(homeId, columnName);
+    public Object getColumnValue(int homeId, String columnName, String derType) {
+        return derRepository.findColumnValueByHomeIdAndDerType(homeId, columnName, derType);
     }
 
     public List<ColumnList> findByList(List<String> fieldNames) {
         List<ColumnList> result = new ArrayList<>();
         for (String fieldName : fieldNames) {
-            List<ColumnList> columnLists = listRepository.findByListName(fieldName);
+            List<ColumnList> columnLists = listRepository.findByTableNameAndListName("der_table",fieldName);
             result.addAll(columnLists); // 각각의 결과를 결과 리스트에 추가
         }
         return result;

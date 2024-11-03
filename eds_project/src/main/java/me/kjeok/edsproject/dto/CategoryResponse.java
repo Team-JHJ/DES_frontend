@@ -6,12 +6,12 @@ import me.kjeok.edsproject.domain.Resource;
 
 @Getter
 public class CategoryResponse {
-    private String resourceName;
-    private String resourceDescription;
+    private String categoryName;
+    private String categoryDescription;
 
     @Builder
     public CategoryResponse(Resource resource) {
-        this.resourceName = resource.getResourceName();
-        this.resourceDescription = resource.getResourceDescription();
+        this.categoryName = resource.getResourceName();
+        this.categoryDescription = resource.getResourceDescription();
     }
 }

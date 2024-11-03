@@ -1,5 +1,5 @@
 package me.kjeok.edsproject.repository;
 
 public interface DerRepositoryCustom {
-    Object findColumnValueByHomeId(int homeId, String columnName);
+    Object findColumnValueByHomeIdAndDerType(int homeId, String columnName, String derType);
 }

@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+    // dev tool
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // springboot
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // jpa

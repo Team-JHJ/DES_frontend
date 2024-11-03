@@ -13,13 +13,15 @@ public class DerRepositoryImpl implements DerRepositoryCustom {
     private EntityManager entityManager;
 
     @Override
-    public Object findColumnValueByHomeId(int homeId, String columnName) {
-        String sql = "SELECT " + columnName + " FROM der_table WHERE home_id = :homeId";
+    public Object findColumnValueByHomeIdAndDerType(int homeId, String columnName, String derType) {
+        String sql = "SELECT " + columnName + " FROM der_table WHERE home_id = :homeId AND der_type = :derType";
         List<Object> results = entityManager.createNativeQuery(sql)
                 .setParameter("homeId", homeId)
+                .setParameter("derType", derType) // derType 파라미터 추가
                 .getResultList();
         return results.isEmpty() ? null : results.get(0); // 결과가 없을 경우 null 반환
     }
+
 
 
 }

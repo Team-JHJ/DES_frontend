@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ListRepository extends JpaRepository<ColumnList, Long> {
-    List<ColumnList> findByListName(String list);
+    List<ColumnList> findByTableNameAndListName(String tableName,String list);
 
 }

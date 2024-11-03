@@ -15,6 +15,9 @@ public class ColumnList {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "table_name", nullable = false)
+    private String tableName;
+
     @Column(name = "column_name", nullable = false)
     private String listName;
 
