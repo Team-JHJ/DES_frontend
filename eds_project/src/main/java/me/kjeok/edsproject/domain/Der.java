@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 public class Der {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
-    private Long id;
+    //@Column(name = "id", updatable = false)
+    //private Long id;
 
     @Column(name = "der_type", nullable = false, length = 50)
     private String derType;
@@ -47,6 +47,6 @@ public class Der {
     @Column(name = "home_id", nullable = false)
     private Long homeId;
 
-    @Column(name = "inverter_id", nullable = false)
-    private Long inverterId;
+    /*@Column(name = "inverter_id", nullable = false)
+    private Long inverterId;*/
 }

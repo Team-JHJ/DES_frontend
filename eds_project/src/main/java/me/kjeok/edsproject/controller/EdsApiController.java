@@ -1,8 +1,10 @@
 package me.kjeok.edsproject.controller;
 
+import jakarta.persistence.Column;
 import jdk.jfr.Category;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import me.kjeok.edsproject.domain.ColumnList;
 import me.kjeok.edsproject.domain.Der;
 import me.kjeok.edsproject.domain.Resource;
 import me.kjeok.edsproject.dto.CategoryResponse;
@@ -56,17 +58,6 @@ public class EdsApiController {
         return ResponseEntity.ok(menuResponses);
     }
 
-    @GetMapping("/{home_id}/{list}/findByListt")
-    public ResponseEntity<List<ListResponse>> listt(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
-
-        Object columnValue = edsService.getColumnValue(homeId, list);
-
-        List<ListResponse> listResponses = edsService.findByList(list)
-                .stream()
-                .map(columnList -> new ListResponse(columnList, 2, columnValue))
-                .toList();
-        return ResponseEntity.ok(listResponses);
-    }
 
     @GetMapping("/{home_id}/{category}/findByDerMenu")
     public ResponseEntity<List<DerResponse>> der(
@@ -81,27 +72,51 @@ public class EdsApiController {
         return ResponseEntity.ok(derResponses);
     }
 
-    @GetMapping("/fields")
-    public ResponseEntity<List<String>> getFieldNames() {
-        List<String> fieldNames = Arrays.stream(DerResponse.class.getDeclaredFields())  // Der.class 대신 DerResponse.class 사용
-                .map(Field::getName)
+
+    //
+    @GetMapping("/{home_id}/{category}/findByList")
+    public ResponseEntity<List<ListResponse>> list(@PathVariable("home_id") int homeId, @PathVariable("category") String category) {
+        List<String> fieldNames = getDerColumn().getBody();
+        List<String> derListDescriptions = derListDescriptions().getBody();
+
+        // 모든 필드에 대한 컬럼 값을 조회
+        List<Object> columnValues = fieldNames.stream()
+                .map(fieldName -> edsService.getColumnValue(homeId, fieldName)) // 각 필드 이름에 대해 값을 조회
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(fieldNames);
-    }
-
-    @GetMapping("/{home_id}/{list}/findByList")
-    public ResponseEntity<List<ListResponse>> list(@PathVariable("home_id") int homeId, @PathVariable("list") String list) {
-        Object columnValue = edsService.getColumnValue(homeId, list);
-
-        // DTO의 필드명을 가져오는 메서드 호출
-        List<String> fieldNames = getFieldNames().getBody();
-
+        // ListResponse 객체를 생성하여 응답을 구성
         List<ListResponse> listResponses = IntStream.range(0, fieldNames.size())
-                .mapToObj(i -> new ListResponse(i + 1, fieldNames.get(i), "설명 미정", columnValue)) // 설명은 필요에 따라 수정
+                .mapToObj(i -> new ListResponse(i + 1, fieldNames.get(i), derListDescriptions.get(i), columnValues.get(i))) // 각 컬럼 값 사용
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(listResponses);
+    }
+
+
+    // der list description List
+    @GetMapping("/derListDescriptions")
+    public ResponseEntity<List<String>> derListDescriptions() {
+        List<String> fieldNames = getDerColumn().getBody();
+
+        List<String> listResponses = edsService.findByList(fieldNames)
+                .stream()
+                .map(ColumnList::getListDescription) // ListResponse 생성
+                .collect(Collectors.toList()); // toList()를 스트림 끝에 호출
+
+        return ResponseEntity.ok(listResponses);
+    }
+
+    // der필드 List
+    @GetMapping("/derFields")
+    public ResponseEntity<List<String>> getDerColumn() {
+        List<String> fieldNames = Arrays.stream(Der.class.getDeclaredFields())  // Der.class 사용
+                .map(field -> {
+                    Column columnAnnotation = field.getAnnotation(Column.class); // @Column 어노테이션을 가져옴
+                    return columnAnnotation != null ? columnAnnotation.name() : field.getName(); // 컬럼 이름 반환
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(fieldNames);
     }
 
 }

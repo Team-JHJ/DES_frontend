@@ -18,12 +18,8 @@ public class DerRepositoryImpl implements DerRepositoryCustom {
         List<Object> results = entityManager.createNativeQuery(sql)
                 .setParameter("homeId", homeId)
                 .getResultList();
-
-        if (!results.isEmpty()) {
-            return results.get(0); // 첫 번째 결과를 반환
-        } else {
-            return null; // 결과가 없을 경우 null 반환
-        }
+        return results.isEmpty() ? null : results.get(0); // 결과가 없을 경우 null 반환
     }
+
 
 }

@@ -9,6 +9,7 @@ import me.kjeok.edsproject.repository.ListRepository;
 import me.kjeok.edsproject.repository.ResourceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -26,10 +27,6 @@ public class EdsService {
         return resourceRepository.findByResourceName(resourceName);
     }
 
-    public List<ColumnList> findByList(String listName) {
-        return listRepository.findByListName(listName);
-    }
-
     public List<Der> findByDerMenu(int home_id, String category) {
         return derRepository.findByHomeIdAndDerType(home_id, category);
     }
@@ -37,5 +34,15 @@ public class EdsService {
     public Object getColumnValue(int homeId, String columnName) {
         return derRepository.findColumnValueByHomeId(homeId, columnName);
     }
+
+    public List<ColumnList> findByList(List<String> fieldNames) {
+        List<ColumnList> result = new ArrayList<>();
+        for (String fieldName : fieldNames) {
+            List<ColumnList> columnLists = listRepository.findByListName(fieldName);
+            result.addAll(columnLists); // 각각의 결과를 결과 리스트에 추가
+        }
+        return result;
+    }
+
 }
 

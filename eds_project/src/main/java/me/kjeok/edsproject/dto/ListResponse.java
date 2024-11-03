@@ -16,8 +16,7 @@ public class ListResponse {
 
     // ColumnList를 통한 생성자
     @Builder
-    public ListResponse(ColumnList columnList, int id, Object listValue) {
-        this.id = id;
+    public ListResponse(ColumnList columnList, Object listValue) {
         this.listName = columnList.getListName();
         this.listDescription = columnList.getListDescription();
         this.listValue = listValue;
@@ -29,5 +28,10 @@ public class ListResponse {
         this.listName = listName;
         this.listDescription = listDescription;
         this.listValue = listValue;
+    }
+
+    @Builder
+    public ListResponse(ColumnList columnList) {
+        this.listDescription = columnList.getListDescription();
     }
 }
