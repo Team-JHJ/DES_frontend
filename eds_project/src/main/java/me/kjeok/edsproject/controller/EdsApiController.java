@@ -1,6 +1,8 @@
 package me.kjeok.edsproject.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.persistence.Column;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.kjeok.edsproject.domain.*;
 import me.kjeok.edsproject.dto.*;
@@ -9,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -19,33 +20,47 @@ public class EdsApiController {
     private final EdsService edsService;
 
 
-    @GetMapping("/{home_id}/{category}/apiCall")
-    public ResponseEntity<Map<String, Object>> list(@PathVariable("home_id") int homeId, @PathVariable("category") String category) {
-        List<String> derTypes = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
-        List<String> loadTypes = Arrays.asList("HVAC", "Lighting", "EV Charger", "Refrigerator", "Washing Machine", "Dishwasher");
-        List<String> metricsTypes = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
+    @GetMapping("/home/{home_id}/{category}")
+    @Operation(summary = "home API",
+            description = "home_id(int) parameter: 1 | 2 | 3, " +
+                    "<br>category(String) parameter: der | homeload | metrics | emd")
+    public ResponseEntity<Map<String, Object>> handleRequest(@PathVariable("home_id") int homeId,
+                                                             @PathVariable("category") String category) {
+        switch (category) {
+            case "der":
+            case "homeload":
+            case "metrics":
+                return derHomeloadMetrics(homeId, category);
+            case "emd":
+                return emd(homeId);
+            default:
+                throw new IllegalArgumentException("Invalid category: " + category);
+        }
+    }
 
+    public ResponseEntity<Map<String, Object>> derHomeloadMetrics(int homeId, String category) {
         List<String> types;
         List<String> fieldNames;
 
         // 카테고리별로 유형과 필드명을 설정
         switch (category) {
             case "der":
-                types = derTypes;
+                types = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
                 fieldNames = getDerColumn().getBody();
                 break;
             case "homeload":
-                types = loadTypes;
+                types = Arrays.asList("HVAC", "Lighting", "EV Charger", "Refrigerator", "Washing Machine", "Dishwasher");
                 fieldNames = getLoadColumn().getBody();
                 break;
             case "metrics":
-                types = metricsTypes;
-                fieldNames = getmetricsColumn().getBody();
+                types = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
+                fieldNames = getMetricsColumn().getBody();
                 break;
             default:
                 throw new IllegalArgumentException("Invalid category: " + category);
         }
 
+        // menuResponses 초기화
         List<MenuResponse> menuResponses = new ArrayList<>();
 
         for (String type : types) {
@@ -53,24 +68,25 @@ public class EdsApiController {
             String menuDescription = resources.isEmpty() ? "" : resources.get(0).getResourceDescription();
 
             List<String> listDescription = listDescriptions(category).getBody();
-
-            // 각 필드에 대한 컬럼 값을 조회
             List<Object> columnValues = new ArrayList<>();
+
             for (String fieldName : fieldNames) {
                 Object value;
                 if (category.equals("der")) {
                     value = edsService.getDerColumnValue(homeId, fieldName, type);
                 } else if (category.equals("homeload")) {
                     value = edsService.getLoadColumnValue(homeId, fieldName, type);
-                } else { // category.equals("metrics")
-                    value = edsService.getColumnValueWithoutType(homeId, fieldName, "metrics");
+                } else {
+                    value = edsService.findColumnValueByHomeId(homeId, fieldName, "metrics", type);
                 }
                 columnValues.add(value);
             }
 
             // ListResponse 객체 생성
             List<ListResponse> listResponses = IntStream.range(0, fieldNames.size())
-                    .mapToObj(i -> new ListResponse(i + 1, fieldNames.get(i), i < listDescription.size() ? listDescription.get(i) : null, i < columnValues.size() ? columnValues.get(i) : null))
+                    .mapToObj(i -> new ListResponse(i + 1, fieldNames.get(i),
+                            i < listDescription.size() ? listDescription.get(i) : null,
+                            i < columnValues.size() ? columnValues.get(i) : null))
                     .collect(Collectors.toList());
 
             // MenuResponse 생성
@@ -95,9 +111,7 @@ public class EdsApiController {
     }
 
 
-
-    @GetMapping("/{home_id}/emd")
-    public ResponseEntity<Map<String, Object>> emdList(@PathVariable("home_id") int homeId) {
+    public ResponseEntity<Map<String, Object>> emd(int homeId) {
 
         // 필드명 가져오기
         List<String> inverterField = getInverterColumn().getBody();
@@ -115,7 +129,7 @@ public class EdsApiController {
 
         // 각 필드에 대한 인버터 컬럼 값 조회
         List<Object> inverterColumnValues = inverterField.stream()
-                .map(field -> edsService.getColumnValueWithoutType(homeId, field, "inverter"))
+                .map(field -> edsService.getColumnValueByHomeId(homeId, field, "inverter"))
                 .collect(Collectors.toList());
 
         // 인버터 ListResponse 객체 생성
@@ -136,7 +150,7 @@ public class EdsApiController {
 
         // 각 필드에 대한 미터 컬럼 값 조회
         List<Object> meterColumnValues = meterField.stream()
-                .map(field -> edsService.getColumnValueWithoutType(homeId, field, "smartmeter"))
+                .map(field -> edsService.getColumnValueByHomeId(homeId, field, "smartmeter"))
                 .collect(Collectors.toList());
 
         // 미터 ListResponse 객체 생성
@@ -166,6 +180,7 @@ public class EdsApiController {
     }
 
     @GetMapping("/vpp")
+    @Operation(summary = "vpp API")
     public ResponseEntity<Map<String, Object>> vppList() {
 
         // 필드명 가져오기
@@ -215,70 +230,7 @@ public class EdsApiController {
 
     /***********************************************************************************/
 
-    @GetMapping("/{home_id}/{loadType}/findByLoadType")
-    public ResponseEntity<List<LoadResponse>> load(@PathVariable("home_id") int homeId, @PathVariable("loadType") String loadType) {
-        List<LoadResponse> loadResponses = edsService.findByHomeIdAndLoadType(homeId, loadType)
-                .stream()
-                .map(LoadResponse::new)
-                .toList();
-
-        return ResponseEntity.ok(loadResponses);
-    }
-
-
-    @GetMapping("/{category}/findByCategory")
-    public ResponseEntity<List<CategoryResponse>> category(@PathVariable("category") String category) {
-        // 특정 카테고리 이름으로 리소스를 조회
-        List<CategoryResponse> categoryResponses = edsService.findByCategory(category)
-                .stream()
-                .map(CategoryResponse::new)  // CategoryResponse로 변환
-                .toList();
-
-        // List<CategoryResponse>를 응답으로 반환
-        return ResponseEntity.ok(categoryResponses);
-    }
-
-    @GetMapping("/findByMenu")
-    public ResponseEntity<List<MenuResponse>> menu() {
-        List<String> derTypes = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
-        List<MenuResponse> menuResponses = new ArrayList<>();
-
-        // AtomicInteger를 사용하여 ID를 관리
-        AtomicInteger globalId = new AtomicInteger(1);
-
-        for (String derType : derTypes) {
-            List<Resource> resources = edsService.findByMenu(derType);
-
-            //List<MenuResponse> responses = IntStream.range(0, resources.size())
-            //        .mapToObj(j -> new MenuResponse(globalId.getAndIncrement(), resources.get(j))) // 순서 ID를 매개변수로 추가
-            //        .collect(Collectors.toList());
-
-            //menuResponses.addAll(responses);
-        }
-
-        return ResponseEntity.ok(menuResponses);
-    }
-
-
-
-
-    //@GetMapping("/{home_id}/{category}/findByDerMenu")
-    public ResponseEntity<List<DerResponse>> der(
-            @PathVariable("home_id") int homeId,
-            @PathVariable("category") String category) {
-
-        List<DerResponse> derResponses = edsService.findByDerMenu(homeId, category)
-                .stream()
-                .map(der -> new DerResponse(der))
-                .toList();
-
-        return ResponseEntity.ok(derResponses);
-    }
-
-
-
-    // der필드 List
-    @GetMapping("/derFields")
+    //@GetMapping("/derFields")
     public ResponseEntity<List<String>> getDerColumn() {
         List<String> derFieldNames = Arrays.stream(Der.class.getDeclaredFields())  // Der.class 사용
                 .filter(field -> !field.getName().equals("homeId")) // home_id 필드를 제외
@@ -293,8 +245,7 @@ public class EdsApiController {
         return ResponseEntity.ok(derFieldNames);
     }
 
-    // homeload필드 list
-    @GetMapping("/homeloadFieds")
+    //@GetMapping("/homeloadFieds")
     public ResponseEntity<List<String>> getLoadColumn() {
         List<String> loadFieldNames = Arrays.stream(HomeLoad.class.getDeclaredFields())
                 .filter(field -> !field.getName().equals("homeId"))
@@ -308,7 +259,7 @@ public class EdsApiController {
         return ResponseEntity.ok(loadFieldNames);
     }
 
-    @GetMapping("/inverterFields")
+    //@GetMapping("/inverterFields")
     public ResponseEntity<List<String>> getInverterColumn() {
         List<String> inverterFieldNames = Arrays.stream(Inverter.class.getDeclaredFields())
                 .filter(field -> !field.getName().equals("homeId"))
@@ -322,7 +273,7 @@ public class EdsApiController {
         return ResponseEntity.ok(inverterFieldNames);
     }
 
-    @GetMapping("/meterFields")
+    //@GetMapping("/meterFields")
     public ResponseEntity<List<String>> getMeterColumn() {
         List<String> meterFieldNames = Arrays.stream(SmartMeter.class.getDeclaredFields())
                 .filter(field -> !field.getName().equals("homeId"))
@@ -336,7 +287,7 @@ public class EdsApiController {
         return ResponseEntity.ok(meterFieldNames);
     }
 
-    @GetMapping("/vppFields")
+    //@GetMapping("/vppFields")
     public ResponseEntity<List<String>> getVppColumn() {
         List<String> vppFieldNames = Arrays.stream(Vpp.class.getDeclaredFields())
                 .filter(field -> !field.getName().equals("homeId"))
@@ -350,8 +301,8 @@ public class EdsApiController {
         return ResponseEntity.ok(vppFieldNames);
     }
 
-    @GetMapping("/metricsFields")
-    public ResponseEntity<List<String>> getmetricsColumn() {
+    //@GetMapping("/metricsFields")
+    public ResponseEntity<List<String>> getMetricsColumn() {
         List<String> metricsFieldNames = Arrays.stream(Metrics.class.getDeclaredFields())
                 .filter(field -> !field.getName().equals("homeId"))
                 .filter(field -> !field.getName().equals("der_type"))
@@ -364,7 +315,7 @@ public class EdsApiController {
         return ResponseEntity.ok(metricsFieldNames);
     }
 
-    @GetMapping("/{category}/listDescriptions")
+    //@GetMapping("/{category}/listDescriptions")
     public ResponseEntity<List<String>> listDescriptions(@PathVariable("category") String category) {
         // 각 카테고리에 대한 필드명을 가져온다.
         List<String> loadFieldNames = getLoadColumn().getBody();
@@ -372,7 +323,7 @@ public class EdsApiController {
         List<String> inverterFieldNames = getInverterColumn().getBody();
         List<String> meterFieldNames = getMeterColumn().getBody();
         List<String> vppFieldNames = getVppColumn().getBody();
-        List<String> metricsFieldNames = getmetricsColumn().getBody();
+        List<String> metricsFieldNames = getMetricsColumn().getBody();
 
         List<String> fieldNames;
         // 카테고리별로 필드명을 설정
@@ -408,4 +359,62 @@ public class EdsApiController {
         return ResponseEntity.ok(listResponses); // 응답으로 리스트 반환
     }
 
+
+    /*
+    @GetMapping("/{home_id}/{loadType}/findByLoadType")
+    public ResponseEntity<List<LoadResponse>> load(@PathVariable("home_id") int homeId, @PathVariable("loadType") String loadType) {
+        List<LoadResponse> loadResponses = edsService.findByHomeIdAndLoadType(homeId, loadType)
+                .stream()
+                .map(LoadResponse::new)
+                .toList();
+
+        return ResponseEntity.ok(loadResponses);
+    }
+
+    @GetMapping("/{category}/findByCategory")
+    public ResponseEntity<List<CategoryResponse>> category(@PathVariable("category") String category) {
+        // 특정 카테고리 이름으로 리소스를 조회
+        List<CategoryResponse> categoryResponses = edsService.findByCategory(category)
+                .stream()
+                .map(CategoryResponse::new)  // CategoryResponse로 변환
+                .toList();
+
+        // List<CategoryResponse>를 응답으로 반환
+        return ResponseEntity.ok(categoryResponses);
+    }
+
+    @GetMapping("/findByMenu")
+    public ResponseEntity<List<MenuResponse>> menu() {
+        List<String> derTypes = Arrays.asList("Solar", "Wind", "EV Battery", "ESS");
+        List<MenuResponse> menuResponses = new ArrayList<>();
+
+        // AtomicInteger를 사용하여 ID를 관리
+        AtomicInteger globalId = new AtomicInteger(1);
+
+        for (String derType : derTypes) {
+            List<Resource> resources = edsService.findByMenu(derType);
+
+            //List<MenuResponse> responses = IntStream.range(0, resources.size())
+            //        .mapToObj(j -> new MenuResponse(globalId.getAndIncrement(), resources.get(j))) // 순서 ID를 매개변수로 추가
+            //        .collect(Collectors.toList());
+
+            //menuResponses.addAll(responses);
+        }
+
+        return ResponseEntity.ok(menuResponses);
+    }
+
+    @GetMapping("/{home_id}/{category}/findByDerMenu")
+    public ResponseEntity<List<DerResponse>> der(
+            @PathVariable("home_id") int homeId,
+            @PathVariable("category") String category) {
+
+        List<DerResponse> derResponses = edsService.findByDerMenu(homeId, category)
+                .stream()
+                .map(der -> new DerResponse(der))
+                .toList();
+
+        return ResponseEntity.ok(derResponses);
+    }
+    */
 }

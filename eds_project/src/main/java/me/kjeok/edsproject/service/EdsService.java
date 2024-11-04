@@ -44,8 +44,12 @@ public class EdsService {
         return listRepository.findColumnValueByHomeIdAndLoadType(homeId, columnName, loadType);
     }
 
-    public Object getColumnValueWithoutType(int homeId, String ColumnName, String tableName) {
+    public Object getColumnValueByHomeId(int homeId, String ColumnName, String tableName) {
         return listRepository.findColumnValueByHomeId(homeId, ColumnName, tableName);
+    }
+
+    public Object findColumnValueByHomeId(int homeId, String ColumnName, String tableName, String metricsType) {
+        return listRepository.findColumnValueByHomeId(homeId, ColumnName, tableName, metricsType);
     }
 
     public Object getColumnValue(String columnName, String tableName) {

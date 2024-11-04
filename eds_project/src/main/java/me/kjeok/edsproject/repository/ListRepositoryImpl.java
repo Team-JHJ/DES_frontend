@@ -39,6 +39,18 @@ public class ListRepositoryImpl implements ListRepositoryCustom {
     }
 
     @Override
+    public Object findColumnValueByHomeId(int homeId, String columnName, String tableName, String metricsType) {
+        String sql = "SELECT " + columnName + " FROM " + tableName + "_table WHERE home_id = :homeId AND der_type = :metricsType"; // SQL 쿼리
+        List<Object> results = entityManager.createNativeQuery(sql)
+                .setParameter("homeId", homeId)
+                .setParameter("metricsType", metricsType) // 여기서 metricsType 바인딩
+                .getResultList();
+        return results.isEmpty() ? null : results.get(0); // 결과가 없을 경우 null 반환
+    }
+
+
+
+    @Override
     public Object findColumnValue(String columnName, String tableName) {
         String sql = "SELECT " + columnName + " FROM " + tableName + "_table";
         List<Object> results = entityManager.createNativeQuery(sql)
