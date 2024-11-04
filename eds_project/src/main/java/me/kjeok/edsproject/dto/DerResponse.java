@@ -16,7 +16,6 @@ public class DerResponse {
     private String gridConnection;
 
 
-
     public DerResponse(Der der) {
         this.generationCapacity = der.getGenerationCapacity();
         this.installationDate = der.getInstallationDate();

@@ -5,10 +5,7 @@ import me.kjeok.edsproject.domain.ColumnList;
 import me.kjeok.edsproject.domain.Der;
 import me.kjeok.edsproject.domain.HomeLoad;
 import me.kjeok.edsproject.domain.Resource;
-import me.kjeok.edsproject.repository.DerRepository;
-import me.kjeok.edsproject.repository.ListRepository;
-import me.kjeok.edsproject.repository.LoadRepository;
-import me.kjeok.edsproject.repository.ResourceRepository;
+import me.kjeok.edsproject.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,6 +18,7 @@ public class EdsService {
     private final ResourceRepository resourceRepository;
     private final ListRepository listRepository;
     private final LoadRepository loadRepository;
+    private final InverterRepository inverterRepository;
 
     public List<Resource> findByCategory(String categoryName) {
         return resourceRepository.findByResourceName(categoryName);
@@ -44,6 +42,14 @@ public class EdsService {
 
     public Object getLoadColumnValue(int homeId, String columnName, String loadType) {
         return listRepository.findColumnValueByHomeIdAndLoadType(homeId, columnName, loadType);
+    }
+
+    public Object getColumnValueWithoutType(int homeId, String ColumnName, String tableName) {
+        return listRepository.findColumnValueByHomeId(homeId, ColumnName, tableName);
+    }
+
+    public Object getColumnValue(String columnName, String tableName) {
+        return listRepository.findColumnValue(columnName, tableName);
     }
 
     public List<ColumnList> findByList(List<String> fieldNames, String tableName) {
