@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setHeader } from '@/store/header-slice.js'
 
 const TimeDisplay = () => {
     const [date, setDate] = useState(new Date())
@@ -31,12 +33,24 @@ const TimeDisplay = () => {
 }
 
 export default function Header() {
-    console.log('헤더')
+    const headerTitle = useSelector((state) => state.headerSlice.title)
+    const headerDescription = useSelector(
+        (state) => state.headerSlice.description,
+    )
+    const [title, setTitle] = useState(headerTitle)
+    const [description, setDescription] = useState(headerDescription)
+
+    // 헤더의 제목과 설명이 변경되면 제목과 설명 재설정
+    useEffect(() => {
+        setTitle(headerTitle)
+        setDescription(headerDescription)
+    }, [headerTitle, headerDescription])
+
     return (
         <div className={styles['header']}>
             <div className={styles['inner']}>
-                <div className={styles['title']}>제목</div>
-                <div className={styles['description']}>설명</div>
+                <div className={styles['title']}>{title}</div>
+                <div className={styles['description']}>{description}</div>
                 <TimeDisplay />
             </div>
         </div>
