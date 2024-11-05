@@ -8,9 +8,24 @@ import house1img from '../../assets/img/house1.png'
 import house2img from '../../assets/img/house2.png'
 import house3img from '../../assets/img/house3.png'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setHeader } from '@/store/header-slice.js'
 
 export default function MainPage() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    // 페이지에 해당하는 헤더 제목과 설명 설정
+    useEffect(() => {
+        dispatch(
+            setHeader({
+                title: '메인페이지',
+                description:
+                    '3개의 가정집의 에너지와 한국전력이 VPP를 통해 에너지 거래가 이루어지는 구조를 나타냈습니다.',
+            }),
+        )
+    }, [])
 
     const navigateHouse = (houseNum) => {
         navigate(`/house/${houseNum}`)

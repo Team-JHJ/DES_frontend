@@ -6,8 +6,23 @@ import erd from '@/assets/img/erd.png'
 import reactlogo from '@/assets/img/react-logo.png'
 import sblogo from '@/assets/img/spring-boot-logo.png'
 import mysqllogo from '@/assets/img/my-sql-logo.png'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setHeader } from '@/store/header-slice.js'
 
 export default function IntroductionPage() {
+    const dispatch = useDispatch()
+
+    // 페이지에 해당하는 헤더 제목과 설명 설정
+    useEffect(() => {
+        dispatch(
+            setHeader({
+                title: '분산에너지 소개',
+                description: '분산에너지를 소개합니다.',
+            }),
+        )
+    }, [])
+
     return (
         <div className={styles['introduction-page']}>
             <div className={styles['container']}>

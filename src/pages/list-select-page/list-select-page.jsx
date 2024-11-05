@@ -6,15 +6,30 @@ import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import MainPage from '@/pages/main-page/main-page.jsx'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setHeader } from '@/store/header-slice.js'
 
 export default function ListSelectPage() {
     const navigate = useNavigate()
     const param = useParams()
+    const dispatch = useDispatch()
     // console.log(param)
     const houseId = param.houseId
     console.log(houseId)
     // const parameter = useLocation()
     // console.log(parameter)
+
+    // 페이지에 해당하는 헤더 제목과 설명 설정
+    useEffect(() => {
+        dispatch(
+            setHeader({
+                title: '카테고리 선택',
+                description:
+                    '원하는 카테고리를 선택하여 해당 집별 상세 정보를 확인할 수 있습니다.',
+            }),
+        )
+    }, [])
 
     const validHouseIds = ['1', '2', '3'] // 유효한 houseId 목록
     if (!validHouseIds.includes(houseId)) {

@@ -5,15 +5,27 @@ import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
 import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setHeader } from '@/store/header-slice.js'
 
 export default function SustMetricsListPage() {
     const navigate = useNavigate()
     const param = useParams()
     console.log(param)
     const houseId = param.houseId
-    // console.log(houseId)
+    const dispatch = useDispatch()
 
-    // const navigate = useNavigate()
+    // 페이지에 해당하는 헤더 제목과 설명 설정
+    useEffect(() => {
+        dispatch(
+            setHeader({
+                title: 'Metrics',
+                description:
+                    '지속 가능성 지표(Sustainability Metrics)는 환경, 사회 및 경제적 지속 가능성을 평가하고 측정하기 위해 사용되는 다양한 지표와 수치들을 의미한다. 이러한 지표는 기업이나 조직이 지속 가능한 발전 목표를 달성하고 있는지를 확인하는 데 중요한 역할을 한다. ',
+            }),
+        )
+    }, [])
 
     const navigateDetails = (sust) => {
         navigate(`/house/${houseId}/sust-metrics/details`, { state: sust })
