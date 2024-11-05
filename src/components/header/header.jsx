@@ -1,10 +1,8 @@
 import styles from './header.module.css'
-import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setHeader } from '@/store/header-slice.js'
+import { useSelector } from 'react-redux'
 
 const TimeDisplay = () => {
     const [date, setDate] = useState(new Date())

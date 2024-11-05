@@ -12,14 +12,8 @@ const headerSlice = createSlice({
         setHeader: (state, action) => {
             return { ...action.payload }
         },
-        setTitle: (state, action) => {
-            state.title = action.payload
-        },
-        setDescription: (state, action) => {
-            state.description = action.payload
-        },
     },
 })
 
-export const { setHeader, setTitle, setDescription } = headerSlice.actions
+export const { setHeader } = headerSlice.actions
 export default headerSlice.reducer

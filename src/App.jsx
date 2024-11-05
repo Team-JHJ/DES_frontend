@@ -45,21 +45,21 @@ const router = createBrowserRouter([
                 element: <SustMetricsListPage />,
             },
             {
-                path: '/house/:houseId/der/details',
+                path: '/house/:houseId/:category/details',
                 element: <DetailPage />,
             },
-            {
-                path: '/house/:houseId/emd/details',
-                element: <DetailPage />,
-            },
-            {
-                path: '/house/:houseId/home-loads/details',
-                element: <DetailPage />,
-            },
-            {
-                path: '/house/:houseId/sust-metrics/details',
-                element: <DetailPage />,
-            },
+            // {
+            //     path: '/house/:houseId/emd/details',
+            //     element: <DetailPage />,
+            // },
+            // {
+            //     path: '/house/:houseId/home-loads/details',
+            //     element: <DetailPage />,
+            // },
+            // {
+            //     path: '/house/:houseId/sust-metrics/details',
+            //     element: <DetailPage />,
+            // },
             {
                 path: '/introduction',
                 element: <IntroductionPage />,
