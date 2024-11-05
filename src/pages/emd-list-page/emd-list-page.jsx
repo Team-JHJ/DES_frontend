@@ -21,11 +21,11 @@ export default function EmdListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('emd')}
+                    onClick={() => navigateDetails('Inverter')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Distribution Energy Resource</p>
+                        <p>Inverter</p>
                     </div>
                 </div>
             </div>
@@ -47,11 +47,11 @@ export default function EmdListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('emd')}
+                    onClick={() => navigateDetails('Smartmeter')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Energy Management Device</p>
+                        <p>Smartmeter</p>
                     </div>
                 </div>
             </div>

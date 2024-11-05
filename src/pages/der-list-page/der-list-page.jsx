@@ -22,7 +22,7 @@ export default function DerListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('solar')}
+                    onClick={() => navigateDetails('Solar')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -32,7 +32,7 @@ export default function DerListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('ev battery')}
+                    onClick={() => navigateDetails('EV Battery')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -58,7 +58,7 @@ export default function DerListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('wind')}
+                    onClick={() => navigateDetails('Wind')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
@@ -68,7 +68,7 @@ export default function DerListPage() {
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('ess')}
+                    onClick={() => navigateDetails('ESS')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>

@@ -24,21 +24,21 @@ export default function SustMetricsListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('sust')}
+                    onClick={() => navigateDetails('Solar')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Solar Data</p>
+                        <p>Solar</p>
                     </div>
                 </div>
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('sust')}
+                    onClick={() => navigateDetails('EV Battery')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>EV Battery Data</p>
+                        <p>EV Battery</p>
                     </div>
                 </div>
             </div>
@@ -60,21 +60,21 @@ export default function SustMetricsListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('sust')}
+                    onClick={() => navigateDetails('Wind')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Wind Data</p>
+                        <p>Wind</p>
                     </div>
                 </div>
                 <div className={styles['blank']}></div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('sust')}
+                    onClick={() => navigateDetails('ESS')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>ESS Data</p>
+                        <p>ESS</p>
                     </div>
                 </div>
             </div>

@@ -23,31 +23,31 @@ export default function HomeLoadsListPage() {
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('HVAC')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Distribution Energy Resource</p>
+                        <p>HVAC</p>
                     </div>
                 </div>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('Refrigerator')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Home Loads</p>
+                        <p>Refrigerator</p>
                     </div>
                 </div>
             </div>
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('Lighting')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Home Loads</p>
+                        <p>Lighting</p>
                     </div>
                 </div>
                 <img
@@ -65,32 +65,32 @@ export default function HomeLoadsListPage() {
                 />
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('Washing Machine')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Home Loads</p>
+                        <p>Washing Machine</p>
                     </div>
                 </div>
             </div>
             <div className={styles['container']}>
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('EV Charger')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Energy Management Device</p>
+                        <p>EV Charger</p>
                     </div>
                 </div>
 
                 <div
                     className={styles['choice']}
-                    onClick={() => navigateDetails('homeloads')}
+                    onClick={() => navigateDetails('Dishwasher')}
                 >
                     <img src={dericon} alt="der icon" />
                     <div className={styles['description']}>
-                        <p>Sustainability Metrics</p>
+                        <p>Dishwasher</p>
                     </div>
                 </div>
             </div>
