@@ -71,8 +71,6 @@ nav {
 }
 
 .menu-item a.active {
-    /*background: rgba(211, 211, 211, 0.8);*/
-    /*background: rgba(176, 196, 222, 0.9);*/
     border-left: 8px solid rgba(176, 196, 222, 1);
     padding-left: 7px;
 }
@@ -88,28 +86,8 @@ nav {
     /*transition: 0.4s;*/
 }
 
-/*.menu-item.active .items {*/
-/*    display: block;*/
-/*    visibility: visible;*/
-/*    opacity: 1;*/
-/*}*/
-
-.menu-main {
-
-}
-
-.menu-vpp {
-
-}
-
-.menu-home1 {
-
-}
-
-.menu-home2 {
-
-}
-
-.menu-home3 {
-
+@media (max-width: 500px) {
+    .leftsidebar-container {
+        display: none;
+    }
 }

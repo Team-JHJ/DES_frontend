@@ -32,3 +32,9 @@
     box-sizing: border-box;
     padding: 10px;
 }
+
+@media (max-width: 500px) {
+    .content {
+        padding-left: 0;
+    }
+}

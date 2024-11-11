@@ -33,16 +33,6 @@ export default function LeftSidebar() {
                         className={`${styles['menu-item']} ${styles['menu-main']}`}
                     >
                         <Link
-                            to="/introduction"
-                            className={`${pathname === '/introduction' ? styles['active'] : ''}`}
-                        >
-                            introduction
-                        </Link>
-                    </div>
-                    <div
-                        className={`${styles['menu-item']} ${styles['menu-main']}`}
-                    >
-                        <Link
                             to="/"
                             className={`${pathname === '/' ? styles['active'] : ''}`}
                         >
@@ -188,6 +178,16 @@ export default function LeftSidebar() {
                                 </Link>
                             </span>
                         </div>
+                    </div>
+                    <div
+                        className={`${styles['menu-item']} ${styles['menu-main']}`}
+                    >
+                        <Link
+                            to="/introduction"
+                            className={`${pathname === '/introduction' ? styles['active'] : ''}`}
+                        >
+                            introduction
+                        </Link>
                     </div>
                 </div>
             </nav>
