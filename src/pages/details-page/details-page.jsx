@@ -1,18 +1,18 @@
 import styles from './details-page.module.css'
 import MenuCard from '@/components/menu-card/menu-card.jsx'
 import InfoTable from '@/components/info-table/info-table.jsx'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import info from '@/api/info.js'
 import Loading from '@/components/loading/loading.jsx'
+import Icon from '@/components/icon/icon.jsx'
 
 export default function DetailPage() {
     const param = useParams()
     const value = useLocation().state
     const [dataList, setDataList] = useState({})
     const [menu, setMenu] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     // 엔드포인트 이름 변경
     const categoryName = {
@@ -267,6 +267,7 @@ export default function DetailPage() {
                 (menu) => menu.menuName === value,
             )
             setMenu(menu[0])
+            setIsLoading(false)
         } catch (error) {
             console.error('Request Error:', error.message)
             alert(error.message)
@@ -279,7 +280,7 @@ export default function DetailPage() {
 
     return (
         <main className={styles['details-page']}>
-            {Object.keys(dataList).length > 0 ? (
+            {!isLoading ? (
                 <>
                     <div className={styles['menu-container']}>
                         <div className={styles['menu-header']}>
@@ -301,11 +302,7 @@ export default function DetailPage() {
                     <div className={styles['details-container']}>
                         <div className={styles['details-header']}>
                             <div className={styles['details-title']}>
-                                <FontAwesomeIcon
-                                    icon={faClock}
-                                    style={{ marginRight: '5px' }}
-                                />
-                                {menu.menuName}
+                                <Icon menu={menu.menuName} /> {menu.menuName}
                             </div>
                             <p className={styles['details-description']}>
                                 {menu.menuDescription}

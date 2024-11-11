@@ -172,7 +172,7 @@ export default function VppInfoPage() {
 
     return (
         <main className={styles['vpp-info-page']}>
-            {Object.keys(dataList).length > 0 ? (
+            {!isLoading ? (
                 <div className={styles['container']}>
                     {dataList.menu[0].list.map((item, index) => (
                         <InfoTable
