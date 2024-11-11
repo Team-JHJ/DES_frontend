@@ -8,6 +8,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setHeader } from '@/store/header-slice.js'
+import { TbSolarPanel2 } from 'react-icons/tb'
+import { MdOutlineWindPower } from 'react-icons/md'
+import { LuContainer } from 'react-icons/lu'
+import { PiBatteryFullBold } from 'react-icons/pi'
 
 export default function DerListPage() {
     const navigate = useNavigate()
@@ -40,7 +44,8 @@ export default function DerListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Solar')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <TbSolarPanel2 class={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Solar</p>
                     </div>
@@ -50,7 +55,8 @@ export default function DerListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('EV Battery')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <PiBatteryFullBold className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>EV Battery</p>
                     </div>
@@ -76,7 +82,8 @@ export default function DerListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Wind')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <MdOutlineWindPower class={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Wind</p>
                     </div>
@@ -86,7 +93,10 @@ export default function DerListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('ESS')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <LuContainer class={styles['icon']} />
+                    {/*<PiShippingContainerBold class={styles['icon']} />*/}
+
                     <div className={styles['description']}>
                         <p>ESS</p>
                     </div>

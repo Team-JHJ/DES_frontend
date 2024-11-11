@@ -1,12 +1,10 @@
 import styles from './menu-card.module.css'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock } from '@fortawesome/free-regular-svg-icons'
+import Icon from '@/components/icon/icon.jsx'
 
 export default function MenuCard({ menu, list, setMenu }) {
     return (
         <div className={styles['menu-card']} onClick={() => setMenu(list)}>
-            <FontAwesomeIcon icon={faClock} />
+            <Icon menu={menu} />
             <p>{menu}</p>
         </div>
     )

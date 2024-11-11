@@ -8,6 +8,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setHeader } from '@/store/header-slice.js'
+import { MdLight, MdOutlineHvac } from 'react-icons/md'
+import { CgSmartHomeRefrigerator, CgSmartHomeWashMachine } from 'react-icons/cg'
+import { TbChargingPile, TbWashMachine } from 'react-icons/tb'
 
 export default function HomeLoadsListPage() {
     const param = useParams()
@@ -40,7 +43,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('HVAC')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <MdOutlineHvac className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>HVAC</p>
                     </div>
@@ -49,7 +53,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Refrigerator')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <CgSmartHomeRefrigerator className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Refrigerator</p>
                     </div>
@@ -60,7 +65,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Lighting')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <MdLight className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Lighting</p>
                     </div>
@@ -82,7 +88,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Washing Machine')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <TbWashMachine className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Washing Machine</p>
                     </div>
@@ -93,7 +100,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('EV Charger')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <TbChargingPile className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>EV Charger</p>
                     </div>
@@ -103,7 +111,8 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Dishwasher')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <CgSmartHomeWashMachine className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Dishwasher</p>
                     </div>

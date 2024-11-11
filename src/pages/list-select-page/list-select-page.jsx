@@ -3,12 +3,15 @@ import styles from './list-select-page.module.css'
 import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
-import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import MainPage from '@/pages/main-page/main-page.jsx'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setHeader } from '@/store/header-slice.js'
+import { FaHouseDamage } from 'react-icons/fa'
+import { FaChartColumn } from 'react-icons/fa6'
+import { MdOutlineFeaturedPlayList } from 'react-icons/md'
+import { SlEnergy } from 'react-icons/sl'
 
 export default function ListSelectPage() {
     const navigate = useNavigate()
@@ -26,7 +29,7 @@ export default function ListSelectPage() {
             setHeader({
                 title: '카테고리 선택',
                 description:
-                    '원하는 카테고리를 선택하여 해당 집별 상세 정보를 확인할 수 있습니다.',
+                    '원하는 카테고리를 선택하여 각 가구별로 보유한 에너지 자원들의 정보를 확인할 수 있습니다.',
             }),
         )
     }, [])
@@ -43,7 +46,8 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/der`)}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <MdOutlineFeaturedPlayList className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Distribution Energy Resource</p>
                     </div>
@@ -53,7 +57,8 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/home-loads`)}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <FaHouseDamage className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Home Loads</p>
                     </div>
@@ -79,7 +84,8 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/emd`)}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <SlEnergy className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Energy Management Device</p>
                     </div>
@@ -89,7 +95,8 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/sust-metrics`)}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <FaChartColumn className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Sustainability Metrics</p>
                     </div>

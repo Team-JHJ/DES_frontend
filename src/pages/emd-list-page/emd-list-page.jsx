@@ -7,6 +7,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setHeader } from '@/store/header-slice.js'
+import { TbBatteryAutomotive } from 'react-icons/tb'
+import { LiaTachometerAltSolid } from 'react-icons/lia'
+import { BsSpeedometer2 } from 'react-icons/bs'
 
 export default function EmdListPage() {
     const param = useParams()
@@ -38,7 +41,8 @@ export default function EmdListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('inverter')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <TbBatteryAutomotive className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Inverter</p>
                     </div>
@@ -64,7 +68,8 @@ export default function EmdListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('smartmeter')}
                 >
-                    <img src={dericon} alt="der icon" />
+                    {/*<img src={dericon} alt="der icon" />*/}
+                    <BsSpeedometer2 className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Smartmeter</p>
                     </div>
