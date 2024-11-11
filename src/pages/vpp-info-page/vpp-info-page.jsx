@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { setHeader } from '@/store/header-slice.js'
 import info from '@/api/info.js'
+import Loading from '@/components/loading/loading.jsx'
 
 export default function VppInfoPage() {
     const dispatch = useDispatch()
     const [dataList, setDataList] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
 
     console.log(import.meta.env.VITE_BACKEND_URL)
 
@@ -15,6 +17,7 @@ export default function VppInfoPage() {
         try {
             const response = await info.getVpp()
             setDataList(response.data)
+            setIsLoading(false)
         } catch (error) {
             console.error('Request Error:', error.message)
             alert(error.message)
@@ -65,11 +68,112 @@ export default function VppInfoPage() {
             },
         ],
     }
+    const exampleObj2 = {
+        category: {
+            category_name: 'DER',
+            category_description: '분산 에너지 자원에 대한 설명...',
+        },
+        menu: [
+            {
+                id: 1,
+                list_name: 'Solar',
+                list_description: '태양광 발전 시스템 설명...',
+                list: [
+                    {
+                        id: 1,
+                        column_name: 'generation_capacity',
+                        column_description: '발전 용량 정보',
+                        column_value: 10,
+                    },
+                    {
+                        id: 2,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                    {
+                        id: 3,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                    {
+                        id: 4,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                ],
+            },
+            {
+                id: 2,
+                list_name: 'Wind',
+                list_description: '풍력 발전 시스템 설명...',
+                list: [
+                    {
+                        id: 1,
+                        column_name: 'generation_capacity',
+                        column_description: '발전 용량 정보',
+                        column_value: 10,
+                    },
+                    {
+                        id: 2,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                ],
+            },
+            {
+                id: 3,
+                list_name: 'EV battery',
+                list_description: 'EV 배터리 시스템 설명...',
+                list: [
+                    {
+                        id: 1,
+                        column_name: 'generation_capacity',
+                        column_description: '발전 용량 정보',
+                        column_value: 10,
+                    },
+                    {
+                        id: 2,
+                        column_name: 'generation_capacity',
+                        column_description: '발전  효율',
+                        column_value: 10,
+                    },
+                    {
+                        id: 3,
+                        column_name: 'soc',
+                        column_description: '배터리의 상태(%)',
+                        column_value: 1000,
+                    },
+                    {
+                        id: 4,
+                        column_name: 'installation_date',
+                        column_description: 'DER이 설치된 날짜',
+                        column_value: 50,
+                    },
+                    {
+                        id: 5,
+                        column_name: 'grid_connection',
+                        column_description: 'DER의 그리드 연결 상태',
+                        column_value: 1000,
+                    },
+                    {
+                        id: 6,
+                        column_name: 'der_type',
+                        column_description: 'DER의 유형',
+                        column_value: 50,
+                    },
+                ],
+            },
+        ],
+    }
 
     return (
         <main className={styles['vpp-info-page']}>
             {Object.keys(dataList).length > 0 ? (
-                <>
+                <div className={styles['container']}>
                     {dataList.menu[0].list.map((item, index) => (
                         <InfoTable
                             key={index}
@@ -78,9 +182,9 @@ export default function VppInfoPage() {
                             value={item.listValue}
                         />
                     ))}
-                </>
+                </div>
             ) : (
-                <p>Loading...</p>
+                <Loading />
             )}
         </main>
     )

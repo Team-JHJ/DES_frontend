@@ -1,4 +1,9 @@
 .vpp-info-page {
+
+    height: 100%;
+}
+
+.container {
     display: flex;
     /*justify-content: space-between;*/
     padding: 10px 20px;
@@ -7,6 +12,7 @@
     row-gap: 20px;
     box-sizing: border-box;
 }
+
 
 
 

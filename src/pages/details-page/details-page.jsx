@@ -6,6 +6,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import info from '@/api/info.js'
+import Loading from '@/components/loading/loading.jsx'
 
 export default function DetailPage() {
     const param = useParams()
@@ -323,7 +324,7 @@ export default function DetailPage() {
                     </div>
                 </>
             ) : (
-                <p>Loading...</p>
+                <Loading />
             )}
         </main>
     )
