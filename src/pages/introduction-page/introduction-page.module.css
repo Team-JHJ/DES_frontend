@@ -67,3 +67,25 @@
     max-width: 300px;
     min-width: 250px;
 }
+
+.link {
+    display: inline-block;
+    color: cornflowerblue;
+    text-decoration: underline;
+    margin: 10px 0;
+}
+
+.case-content {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.case-content img {
+    width: 45%;
+    margin-right: 15px;
+
+}
+
+.black {
+    color: black;
+}
