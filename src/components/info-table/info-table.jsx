@@ -1,10 +1,6 @@
 import styles from './info-table.module.css'
 
 export default function InfoTable({ name, description, value }) {
-    // const name = name
-    // const description = description
-    // const value = value
-
     return (
         <div className={styles['info-table']}>
             <div className={styles['info-title']}>

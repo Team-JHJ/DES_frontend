@@ -46,7 +46,6 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/der`)}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <MdOutlineFeaturedPlayList className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Distribution Energy Resource</p>
@@ -57,7 +56,6 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/home-loads`)}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <FaHouseDamage className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Home Loads</p>
@@ -84,7 +82,6 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/emd`)}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <SlEnergy className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Energy Management Device</p>
@@ -95,7 +92,6 @@ export default function ListSelectPage() {
                     className={styles['choice']}
                     onClick={() => navigate(`/house/${houseId}/sust-metrics`)}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <FaChartColumn className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Sustainability Metrics</p>

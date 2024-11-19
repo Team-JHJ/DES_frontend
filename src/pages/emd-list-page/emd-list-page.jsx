@@ -2,13 +2,11 @@ import styles from './emd-list-page.module.css'
 import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
-import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setHeader } from '@/store/header-slice.js'
 import { TbBatteryAutomotive } from 'react-icons/tb'
-import { LiaTachometerAltSolid } from 'react-icons/lia'
 import { BsSpeedometer2 } from 'react-icons/bs'
 
 export default function EmdListPage() {
@@ -41,7 +39,6 @@ export default function EmdListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('inverter')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <TbBatteryAutomotive className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Inverter</p>
@@ -68,7 +65,6 @@ export default function EmdListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('smartmeter')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <BsSpeedometer2 className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Smartmeter</p>

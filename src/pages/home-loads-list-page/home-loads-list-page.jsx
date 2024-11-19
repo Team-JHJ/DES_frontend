@@ -3,7 +3,6 @@ import styles from './home-loads-list-page.module.css'
 import house1img from '@/assets/img/house1.png'
 import house2img from '@/assets/img/house2.png'
 import house3img from '@/assets/img/house3.png'
-import dericon from '@/assets/img/der_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
@@ -14,9 +13,7 @@ import { TbChargingPile, TbWashMachine } from 'react-icons/tb'
 
 export default function HomeLoadsListPage() {
     const param = useParams()
-    console.log(param)
     const houseId = param.houseId
-    // console.log(houseId)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -43,7 +40,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('HVAC')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <MdOutlineHvac className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>HVAC</p>
@@ -53,7 +49,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Refrigerator')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <CgSmartHomeRefrigerator className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Refrigerator</p>
@@ -65,7 +60,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Lighting')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <MdLight className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Lighting</p>
@@ -88,7 +82,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Washing Machine')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <TbWashMachine className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Washing Machine</p>
@@ -100,7 +93,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('EV Charger')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <TbChargingPile className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>EV Charger</p>
@@ -111,7 +103,6 @@ export default function HomeLoadsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Dishwasher')}
                 >
-                    {/*<img src={dericon} alt="der icon" />*/}
                     <CgSmartHomeWashMachine className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Dishwasher</p>

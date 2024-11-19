@@ -6,7 +6,6 @@ export default function LeftSidebar() {
     const navigate = useNavigate()
     const pathname = useLocation().pathname
     const params = useParams()
-    // console.log(pathname.pathname)
     console.log(params)
 
     return (

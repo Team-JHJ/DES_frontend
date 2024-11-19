@@ -33,10 +33,10 @@ export default function IntroductionPage() {
 
     return (
         <div className={styles['introduction-page']}>
-            <div className={styles['container']}>
-                <h1>분산에너지</h1>
-                <p>추가예정</p>
-            </div>
+            {/*<div className={styles['container']}>*/}
+            {/*    <h1>분산에너지</h1>*/}
+            {/*    <p>추가예정</p>*/}
+            {/*</div>*/}
             <div className={styles['container']}>
                 <h1>에너지 모니터링 시스템 사례</h1>
                 <h3>
