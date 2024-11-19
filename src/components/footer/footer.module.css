@@ -1,0 +1,18 @@
+.footer {
+    height: 9rem;
+    background: rgba(118, 132, 150, 0.8);
+}
+
+.inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}

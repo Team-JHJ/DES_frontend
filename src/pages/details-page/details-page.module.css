@@ -1,0 +1,52 @@
+.details-page {
+    height: 100%;
+}
+
+.menu-container {
+    padding: 20px 20px 30px 20px;
+    border-bottom: 3px solid #ECECEE;
+}
+
+.menu-header {
+    padding: 0 0 20px 0;
+}
+
+.menu-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    row-gap: 20px;
+    box-sizing: border-box;
+}
+
+.details-header {
+    padding: 30px 20px 10px 20px;
+}
+
+.details-title {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.details-description {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.menu-card-container {
+    display: flex;
+    padding: 20px 20px 10px 20px;
+    flex-wrap: wrap;
+    gap: 2%;
+    row-gap: 20px;
+    box-sizing: border-box;
+}
+

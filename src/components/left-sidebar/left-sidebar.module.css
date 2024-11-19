@@ -1,0 +1,92 @@
+.leftsidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    border-right: 1px solid lightgray;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.logo-container {
+    padding: 30px;
+    border-bottom: 1px solid #c7c6c6;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.for {
+    font-size: 14px;
+    color: darkgray;
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 10px 20px 30px 20px;
+}
+
+.menu-item {
+    position: relative;
+    font-size: 19px;
+    border-bottom: 1px solid lightgray;
+    /* 디자인 확인 */
+    padding: 7px;
+    line-height: 1;
+}
+
+.menu-item a {
+    display: block;
+    padding: 15px 0 10px 15px;
+    border-radius: 4px;
+
+}
+
+.menu-item a:hover {
+    background: rgba(198, 211, 231, 0.6);
+}
+
+.menu-item a.active {
+    border-left: 8px solid rgba(176, 196, 222, 1);
+    padding-left: 7px;
+}
+
+
+.items {
+    font-size: 15px;
+    /*padding-left: 15px;*/
+    padding: 5px 0 5px 15px;
+    /*display: none;*/
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+    /*transition: 0.4s;*/
+}
+
+@media (max-width: 500px) {
+    .leftsidebar-container {
+        display: none;
+    }
+}

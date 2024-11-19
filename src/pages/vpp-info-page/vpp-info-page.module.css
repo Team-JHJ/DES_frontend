@@ -1,0 +1,18 @@
+.vpp-info-page {
+
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    /*justify-content: space-between;*/
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    gap: 2%;
+    row-gap: 20px;
+    box-sizing: border-box;
+}
+
+
+
+
