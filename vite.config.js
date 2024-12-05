@@ -12,10 +12,10 @@ export default defineConfig({
         },
     },
     // 빌드 시에 함수 제거
-    esbuild: {
-        drop: ['console', 'debugger'],
-    },
-    server: {
-        https: true,
-    },
+    // esbuild: {
+    //     drop: ['console', 'debugger'],
+    // },
+    // server: {
+    //     https: true,
+    // },
 })

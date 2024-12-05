@@ -40,7 +40,7 @@ export default function SustMetricsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Solar')}
                 >
-                    <TbSolarPanel2 class={styles['icon']} />
+                    <TbSolarPanel2 className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Solar</p>
                     </div>
@@ -76,7 +76,7 @@ export default function SustMetricsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('Wind')}
                 >
-                    <MdOutlineWindPower class={styles['icon']} />
+                    <MdOutlineWindPower className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>Wind</p>
                     </div>
@@ -86,7 +86,7 @@ export default function SustMetricsListPage() {
                     className={styles['choice']}
                     onClick={() => navigateDetails('ESS')}
                 >
-                    <LuContainer class={styles['icon']} />
+                    <LuContainer className={styles['icon']} />
                     <div className={styles['description']}>
                         <p>ESS</p>
                     </div>

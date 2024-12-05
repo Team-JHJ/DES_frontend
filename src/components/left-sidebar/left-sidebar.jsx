@@ -6,7 +6,7 @@ export default function LeftSidebar() {
     const navigate = useNavigate()
     const pathname = useLocation().pathname
     const params = useParams()
-    console.log(params)
+    // console.log(params)
 
     return (
         <div className={styles['leftsidebar-container']}>

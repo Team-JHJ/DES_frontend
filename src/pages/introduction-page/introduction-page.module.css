@@ -3,6 +3,7 @@
     /*flex-direction: column;*/
     box-sizing: border-box;
     padding: 10px;
+    height: 100%;
 }
 
 .introduction-page h1 {
@@ -88,4 +89,14 @@
 
 .black {
     color: black;
+}
+
+.pdf-viewer {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }

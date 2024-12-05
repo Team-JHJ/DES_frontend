@@ -11,8 +11,6 @@ export default function VppInfoPage() {
     const [dataList, setDataList] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-    console.log(import.meta.env.VITE_BACKEND_URL)
-
     const getDetail = async () => {
         try {
             const response = await info.getVpp()
